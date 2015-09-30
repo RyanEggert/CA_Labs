@@ -184,6 +184,10 @@ $display("%b %b | %b   %b     %b         | 1110   0     0         ", a, b, sum, 
 a=4'b0111;b=4'b0111; #1000
 $display("%b %b | %b   %b     %b         | 1110   0     1         ", a, b, sum, carryout, overflow);
 
+// 7 + -7
+a=4'b0111;b=4'b1001; #1000
+$display("%b %b | %b   %b     %b         | 0000   1     1         ", a, b, sum, carryout, overflow);
+
 // -1 + -1
 a=4'b1111;b=4'b1111; #1000
 $display("%b %b | %b   %b     %b         | 1110   1     0         ", a, b, sum, carryout, overflow);
@@ -195,6 +199,22 @@ $display("%b %b | %b   %b     %b         | 1001   1     0         ", a, b, sum, 
 // -1 + -8
 a=4'b1111;b=4'b1000; #1000
 $display("%b %b | %b   %b     %b         | 0111   1     1         ", a, b, sum, carryout, overflow);
+
+// -3 + -3
+a=4'b1101;b=4'b1101; #1000
+$display("%b %b | %b   %b     %b         | 1010   1     0         ", a, b, sum, carryout, overflow);
+
+// -4 + -4
+a=4'b1100;b=4'b1100; #1000
+$display("%b %b | %b   %b     %b         | 1000   1     0         ", a, b, sum, carryout, overflow);
+
+// -5 + -5
+a=4'b1011;b=4'b1011; #1000
+$display("%b %b | %b   %b     %b         | 0110   1     1         ", a, b, sum, carryout, overflow);
+
+// -8 + -8
+a=4'b1000;b=4'b1000; #1000
+$display("%b %b | %b   %b     %b         | 0000   1     1         ", a, b, sum, carryout, overflow);
 
 
 
