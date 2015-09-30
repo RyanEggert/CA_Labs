@@ -38,8 +38,9 @@ module FullAdder4bit
 wire adder0_cout;
 wire adder1_cout;
 wire adder2_cout;
+wire carryin_null = 0;
 // A four-bit full adder is comprised of four one-bit adders
-FullAdder1bit adder0(sum[0], adder0_cout, a[0], b[0], 0); // First addition operation has no carryin
+FullAdder1bit adder0(sum[0], adder0_cout, a[0], b[0], carryin_null); // First addition operation has no carryin
 FullAdder1bit adder1(sum[1], adder1_cout, a[1], b[1], adder0_cout);
 FullAdder1bit adder2(sum[2], adder2_cout, a[2], b[2], adder1_cout);
 FullAdder1bit adder3(sum[3], carryout, a[3], b[3], adder2_cout);
@@ -87,35 +88,42 @@ $display("%b %b %b    |  %b  %b      | 1   1", a, b, carryin, str_sum, str_carry
 end
 endmodule
 
-module testFullAdder1bit;
-reg a, b, carryin;
-wire str_sum, str_carryout;
-wire beh_sum, beh_carryout;
-FullAdder1bit str_adder(str_sum, str_carryout, a, b, carryin);
+module testFullAdder4bit;
+reg [3:0] a;
+reg [3:0] b;
+wire [3:0] sum;
+wire carryout;
+wire overflow;
+
+FullAdder4bit test_adder(sum, carryout, overflow, a, b);
+// wire carryin;
+// wire str_sum, str_carryout;
+// wire beh_sum, beh_carryout;
+// FullAdder1bit str_adder(str_sum, str_carryout, a, b, carryin);
 
 initial begin
+$display("Run adder");
 // Begin Combined Testbench
 // Completely test behavioral and structural adders
-$display(" Inputs  | Structural | Expected");
-$display("A B C_In | Sum C_Out  |Sum C_Out");
-// At most, signal travels through 3 gates. Set durations to a bit over 3 times the gate delay.
-carryin=0;a=0;b=0; #175 
-$display("%b %b %b    |  %b  %b      | 0   0", a, b, carryin, str_sum, str_carryout);
-carryin=1;a=0;b=0; #175 
-$display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
-carryin=0;a=0;b=1; #175 
-$display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
-carryin=1;a=0;b=1; #175 
-$display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
-carryin=0;a=1;b=0; #175 
-$display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
-carryin=1;a=1;b=0; #175 
-$display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
-carryin=0;a=1;b=1; #175 
-$display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
-carryin=1;a=1;b=1; #175 
-$display("%b %b %b    |  %b  %b      | 1   1", a, b, carryin, str_sum, str_carryout);
-// Reference truth table verified from
-// http://www.electronicshub.org/wp-content/uploads/2014/08/Truth-Table-for-Full-Adder.jpg
+$display(" Inputs   |       Outputs          | Expected");
+$display("A    B    | Sum    C_Out Overflow  | Sum    C_Out Overflow  ");
+a=4'b0100;b=4'b0010; #1000
+$display("%b %b | %b   %b     %b         | 0110   0     0         ", a, b, sum, carryout, overflow);
+// carryin=1;a=0;b=0; #175 
+// $display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
+// carryin=0;a=0;b=1; #175 
+// $display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
+// carryin=1;a=0;b=1; #175 
+// $display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
+// carryin=0;a=1;b=0; #175 
+// $display("%b %b %b    |  %b  %b      | 1   0", a, b, carryin, str_sum, str_carryout);
+// carryin=1;a=1;b=0; #175 
+// $display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
+// carryin=0;a=1;b=1; #175 
+// $display("%b %b %b    |  %b  %b      | 0   1", a, b, carryin, str_sum, str_carryout);
+// carryin=1;a=1;b=1; #175 
+// $display("%b %b %b    |  %b  %b      | 1   1", a, b, carryin, str_sum, str_carryout);
+// // Reference truth table verified from
+// // http://www.electronicshub.org/wp-content/uploads/2014/08/Truth-Table-for-Full-Adder.jpg
 end
 endmodule
