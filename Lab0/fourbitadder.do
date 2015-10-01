@@ -2,13 +2,12 @@ vdel -lib work -all
 vlib work
 vlog -reportprogress 300 -work work adder.v
 vsim -voptargs="+acc" testFullAdder4bit
-# add wave -position insertpoint  \
-sim:/testFullAdder/beh_adder/a \
-sim:/testFullAdder/beh_adder/b \
-sim:/testFullAdder/beh_adder/carryin \
-sim:/testFullAdder/beh_adder/sum \
-sim:/testFullAdder/beh_adder/carryout \
-sim:/testFullAdder/str_adder/sum \
-sim:/testFullAdder/str_adder/carryout 
+add wave -position insertpoint  \
+sim:/testFullAdder4bit/a \
+sim:/testFullAdder4bit/b \
+sim:/testFullAdder4bit/overflow \
+sim:/testFullAdder4bit/sum \
+sim:/testFullAdder4bit/carryout \
+sim:/testFullAdder4bit/sum
 run -all
-# wave zoom full
+wave zoom full
