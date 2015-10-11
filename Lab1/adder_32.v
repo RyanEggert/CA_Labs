@@ -102,7 +102,6 @@ wire cout;
 wire ovf;
 // Instantiate 32-bit adder here
 FullAdder32bit test_adder(sum, cout, ovf, a, b);
-endmodule
 
 initial begin
 $display("                               Inputs                               |                        Expected Outputs                                 |                                 Outputs                                 |");
