@@ -12,10 +12,10 @@ bits = 32
 
 #prints the initialization of all variables
 f.write("FullAdder"+str(bits)+"bit(\n\
-	output["+str(bits-1)+":0]sum\n\
-	output carryout\n\
-	input["+str(bits-1)+":0] a\n\
-	input["+str(bits-1)+":0 b\n\
+	output["+str(bits-1)+":0]sum,\n\
+	output carryout,\n\
+	input["+str(bits-1)+":0] a,\n\
+	input["+str(bits-1)+":0] b\n\
 );\n")
 
 #loops through the number of bits and creates an "adder#_cout" wire for each one
