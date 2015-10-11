@@ -22,7 +22,7 @@ module FullAdder32bit
 (
  	output[31:0]sum,
 	output carryout,
-	output ovf,
+	output overflow,
 	input[31:0] a,
 	input[31:0] b
 );
