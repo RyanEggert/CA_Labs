@@ -11,17 +11,18 @@ wire xor1_O;
 wire and1_O;
 wire and2_O;
 
-XOR xor1(xor1_O, a, b);
-XOR xor2(sum, xor1_O, carryin);
-AND and1(and1_O, xor1_O, carryin);
-AND and2(and2_O, a, b);
-OR or1(carryout, and1_O, and2_O);
+xor xor1(xor1_O, a, b);
+xor xor2(sum, xor1_O, carryin);
+and and1(and1_O, xor1_O, carryin);
+and and2(and2_O, a, b);
+or or1(carryout, and1_O, and2_O);
 endmodule
 
 module FullAdder32bit
 (
  	output[31:0]sum,
 	output carryout,
+	output ovf,
 	input[31:0] a,
 	input[31:0] b
 );
@@ -90,7 +91,7 @@ FullAdder1bit adder28(sum[28], adder28_cout, a[28], b[28], adder27_cout);
 FullAdder1bit adder29(sum[29], adder29_cout, a[29], b[29], adder28_cout);
 FullAdder1bit adder30(sum[30], adder30_cout, a[30], b[30], adder29_cout);
 FullAdder1bit adder31(sum[31], carryout, a[31], b[31], adder30_cout);
-XOR overflowxor (overflow, adder30_cout, carryout);
+xor overflowxor (overflow, adder30_cout, carryout);
 endmodule
 
 module test_adder32;
