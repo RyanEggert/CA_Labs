@@ -58,7 +58,7 @@ wire adder29_cout;
 wire adder30_cout;
 wire adder31_cout;
 wire carryin_null = 0;
-FullAdder1bit adder0(sum[0], adder0_cout, a[0], b[0], adder-1_cout);
+FullAdder1bit adder0(sum[0], adder0_cout, a[0], b[0], adder1_cout);
 FullAdder1bit adder1(sum[1], adder1_cout, a[1], b[1], adder0_cout);
 FullAdder1bit adder2(sum[2], adder2_cout, a[2], b[2], adder1_cout);
 FullAdder1bit adder3(sum[3], adder3_cout, a[3], b[3], adder2_cout);
@@ -91,7 +91,7 @@ FullAdder1bit adder29(sum[29], adder29_cout, a[29], b[29], adder28_cout);
 FullAdder1bit adder30(sum[30], adder30_cout, a[30], b[30], adder29_cout);
 FullAdder1bit adder31(sum[31], carryout, a[31], b[31], adder30_cout);
 XOR overflowxor (overflow, adder30_cout, carryout);
-end module
+endmodule
 
 module test_adder32;
 // 32-bit adder has inputs a,b ; outputs sum, ovf, cout
@@ -102,6 +102,7 @@ wire cout;
 wire ovf;
 // Instantiate 32-bit adder here
 FullAdder32bit test_adder(sum, cout, ovf, a, b);
+endmodule
 begin
 $display("                               Inputs                               |                        Expected Outputs                                 |                                 Outputs                                 |");
 $display("a                                | b                                | a + b                            | overflow         | carryout          | a + b                            | overflow         | carryout          |");
