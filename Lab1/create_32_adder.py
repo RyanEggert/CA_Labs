@@ -27,7 +27,7 @@ f.write("wire carryin_null = 0;\n")
 for j in range(bits-1):
 	f.write("FullAdder1bit adder" + str(j) + "(sum[" + str(j) + "], adder" + str(j) + "_cout, a[" + str(j) + "], b[" + str(j) + "], adder" + str(j-1) + "_cout);\n")
 #single print statement to deal with overflow
-f.write("FullAdder1bit adder" + str(bits-1) + ", carryout, a[" + str(bits-1) + "], b[" + str(bits-1) + "], adder" + str(bits-2) + "_cout);\n")
+f.write("FullAdder1bit adder" + str(bits-1) + "(sum[" + str(bits-1) + "], carryout, a[" + str(bits-1) + "], b[" + str(bits-1) + "], adder" + str(bits-2) + "_cout);\n")
 
 #edge case to grab the last overflow and XOR it
 f.write("`XOR overflowxor (overflow, adder"+ str(bits-2)+"_cout, carryout);\n")
