@@ -18,8 +18,9 @@ wire and2_O;
 `OR or1(carryout, and1_O, and2_O);
 endmodule
 
-FullAdder32bit(
-	output[31:0]sum
+module FullAdder32bit
+(
+ 	output[31:0]sum
 	output carryout
 	input[31:0] a
 	input[31:0 b
@@ -88,7 +89,7 @@ FullAdder1bit adder27(sum[27], adder27_cout, a[27], b[27], adder26_cout);
 FullAdder1bit adder28(sum[28], adder28_cout, a[28], b[28], adder27_cout);
 FullAdder1bit adder29(sum[29], adder29_cout, a[29], b[29], adder28_cout);
 FullAdder1bit adder30(sum[30], adder30_cout, a[30], b[30], adder29_cout);
-FullAdder1bit adder31, carryout, a[31], b[31], adder30_cout);
+FullAdder1bit adder31(sum[31], carryout, a[31], b[31], adder30_cout);
 `XOR overflowxor (overflow, adder30_cout, carryout);
 end module
 
