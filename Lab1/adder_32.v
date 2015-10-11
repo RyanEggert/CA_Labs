@@ -103,7 +103,7 @@ wire ovf;
 // Instantiate 32-bit adder here
 FullAdder32bit test_adder(sum, cout, ovf, a, b);
 begin
-$display("                               Inputs                               |                                 Outputs                                 |                        Expected Outputs                                 |");
+$display("                               Inputs                               |                        Expected Outputs                                 |                                 Outputs                                 |");
 $display("a                                | b                                | a + b                            | overflow         | carryout          | a + b                            | overflow         | carryout          |");
 
 // Test basic 1-bit addition
@@ -149,6 +149,15 @@ $display("%b                               | %b                               | 
 //-5 + -21474836485 = 2147483643 OVERFLOW
 a=32'b11111111111111111111111111111011;b=32'b10000000000000000000000000000000; #500
 $display("%b                               | %b                               | 01111111111111111111111111111011 | 1                | 0                 | %b                               | %b               | %b                |", a, b, sum, ovf, cout);
+
+// Positive overflow
+// 2147483647 + 2 = -2147483647 OVERFLOW
+a=32'b01111111111111111111111111111111;b=32'b00000000000000000000000000000010; #500
+$display("%b                               | %b                               | 10000000000000000000000000000001 | 1                | 0                 | %b                               | %b               | %b                |", a, b, sum, ovf, cout);
+
+//-5 + -21474836485 = 2147483643 OVERFLOW
+a=32'b01111111111111111111111111111111;b=32'b00000000000000000000000000000010; #500
+$display("%b                               | %b                               | 10000000000000000000000000000001 | 1                | 0                 | %b                               | %b               | %b                |", a, b, sum, ovf, cout);
 
 end
 endmodule
