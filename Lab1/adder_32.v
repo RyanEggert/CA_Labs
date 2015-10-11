@@ -1,3 +1,23 @@
+module FullAdder1bit
+(
+    output sum,         //sum of a and b
+    output carryout,    // Carry out of summation of a and b
+    input a,            // First operand (1-bit)
+    input b,            // Second operand (1-bit)
+    input carryin       // Carried In bit (1-bit)
+);
+
+wire xor1_O;
+wire and1_O;
+wire and2_O;
+
+`XOR xor1(xor1_O, a, b);
+`XOR xor2(sum, xor1_O, carryin);
+`AND and1(and1_O, xor1_O, carryin);
+`AND and2(and2_O, a, b);
+`OR or1(carryout, and1_O, and2_O);
+endmodule
+
 FullAdder32bit(
 	output[31:0]sum
 	output carryout
