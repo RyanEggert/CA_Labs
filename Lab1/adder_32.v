@@ -105,8 +105,8 @@ wire ovf;
 FullAdder32bit test_adder(sum, cout, ovf, a, b);
 
 initial begin
-$display("                               Inputs                               |                        Expected Outputs                                 |                                 Outputs                                 |");
-$display("a                                | b                                | a + b                            | overflow         | carryout          | a + b                            | overflow         | carryout          |");
+$display("                               Inputs                               |                        Expected Outputs                                 |                                 Outputs                                |");
+$display("a                                | b                                | a + b                            | overflow         | carryout          | a + b                            | overflow         | carryout         |");
 
 // Test basic 1-bit addition
 // 0 + 0 = 0
