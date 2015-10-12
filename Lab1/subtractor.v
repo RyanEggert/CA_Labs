@@ -10,7 +10,7 @@ module Subtractor1bit
 
 //take the 2's complement of b by inverting it and adding 1
 //the plus sign is not a valid way of doing this. it needs to be done a different way...
-not_b = not(b) + 1'b0001;
+//not_b = not(b) + 1'b0001;
 
 wire xor1_O;
 wire and1_O;
@@ -24,7 +24,9 @@ or or1(carryout, and1_O, and2_O);
 
 endmodule
 
-FullSubtractor32bit(
+module FullSubtractor32bit
+(
+
 	output[31:0]sum,
 	output carryout,
 	input[31:0] a,
@@ -62,7 +64,7 @@ wire subtract28_cout;
 wire subtract29_cout;
 wire subtract30_cout;
 wire subtract31_cout;
-wire carryin_null = 0;
+wire carryin_null = 1;
 Subtractor1bit subtract0(sum[0], subtract0_cout, a[0], b[0], carryin_null);
 Subtractor1bit subtract1(sum[1], subtract1_cout, a[1], b[1], subtract0_cout);
 Subtractor1bit subtract2(sum[2], subtract2_cout, a[2], b[2], subtract1_cout);
@@ -95,8 +97,8 @@ Subtractor1bit subtract28(sum[28], subtract28_cout, a[28], b[28], subtract27_cou
 Subtractor1bit subtract29(sum[29], subtract29_cout, a[29], b[29], subtract28_cout);
 Subtractor1bit subtract30(sum[30], subtract30_cout, a[30], b[30], subtract29_cout);
 Subtractor1bit subtract31(sum[31], carryout, a[31], b[31], subtract30_cout);
-`XOR overflowxor (overflow, subtract30_cout, carryout);
-end module
+xor overflowxor (overflow, subtract30_cout, carryout);
+endmodule
 
 module test_subtractor32;
 // 32-bit subtractor has inputs a,b ; outputs sum, ovf, cout
