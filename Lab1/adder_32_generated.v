@@ -1,0 +1,73 @@
+FullAdder32bit(
+	output[31:0]sum,
+	output carryout,
+	input[31:0] a,
+	input[31:0] b
+);
+wire adder0_cout;
+wire adder1_cout;
+wire adder2_cout;
+wire adder3_cout;
+wire adder4_cout;
+wire adder5_cout;
+wire adder6_cout;
+wire adder7_cout;
+wire adder8_cout;
+wire adder9_cout;
+wire adder10_cout;
+wire adder11_cout;
+wire adder12_cout;
+wire adder13_cout;
+wire adder14_cout;
+wire adder15_cout;
+wire adder16_cout;
+wire adder17_cout;
+wire adder18_cout;
+wire adder19_cout;
+wire adder20_cout;
+wire adder21_cout;
+wire adder22_cout;
+wire adder23_cout;
+wire adder24_cout;
+wire adder25_cout;
+wire adder26_cout;
+wire adder27_cout;
+wire adder28_cout;
+wire adder29_cout;
+wire adder30_cout;
+wire adder31_cout;
+wire carryin_null = 0;
+FullAdder1bit adder0(sum[0], adder0_cout, a[0], b[0], carryin_null);
+FullAdder1bit adder1(sum[1], adder1_cout, a[1], b[1], adder0_cout);
+FullAdder1bit adder2(sum[2], adder2_cout, a[2], b[2], adder1_cout);
+FullAdder1bit adder3(sum[3], adder3_cout, a[3], b[3], adder2_cout);
+FullAdder1bit adder4(sum[4], adder4_cout, a[4], b[4], adder3_cout);
+FullAdder1bit adder5(sum[5], adder5_cout, a[5], b[5], adder4_cout);
+FullAdder1bit adder6(sum[6], adder6_cout, a[6], b[6], adder5_cout);
+FullAdder1bit adder7(sum[7], adder7_cout, a[7], b[7], adder6_cout);
+FullAdder1bit adder8(sum[8], adder8_cout, a[8], b[8], adder7_cout);
+FullAdder1bit adder9(sum[9], adder9_cout, a[9], b[9], adder8_cout);
+FullAdder1bit adder10(sum[10], adder10_cout, a[10], b[10], adder9_cout);
+FullAdder1bit adder11(sum[11], adder11_cout, a[11], b[11], adder10_cout);
+FullAdder1bit adder12(sum[12], adder12_cout, a[12], b[12], adder11_cout);
+FullAdder1bit adder13(sum[13], adder13_cout, a[13], b[13], adder12_cout);
+FullAdder1bit adder14(sum[14], adder14_cout, a[14], b[14], adder13_cout);
+FullAdder1bit adder15(sum[15], adder15_cout, a[15], b[15], adder14_cout);
+FullAdder1bit adder16(sum[16], adder16_cout, a[16], b[16], adder15_cout);
+FullAdder1bit adder17(sum[17], adder17_cout, a[17], b[17], adder16_cout);
+FullAdder1bit adder18(sum[18], adder18_cout, a[18], b[18], adder17_cout);
+FullAdder1bit adder19(sum[19], adder19_cout, a[19], b[19], adder18_cout);
+FullAdder1bit adder20(sum[20], adder20_cout, a[20], b[20], adder19_cout);
+FullAdder1bit adder21(sum[21], adder21_cout, a[21], b[21], adder20_cout);
+FullAdder1bit adder22(sum[22], adder22_cout, a[22], b[22], adder21_cout);
+FullAdder1bit adder23(sum[23], adder23_cout, a[23], b[23], adder22_cout);
+FullAdder1bit adder24(sum[24], adder24_cout, a[24], b[24], adder23_cout);
+FullAdder1bit adder25(sum[25], adder25_cout, a[25], b[25], adder24_cout);
+FullAdder1bit adder26(sum[26], adder26_cout, a[26], b[26], adder25_cout);
+FullAdder1bit adder27(sum[27], adder27_cout, a[27], b[27], adder26_cout);
+FullAdder1bit adder28(sum[28], adder28_cout, a[28], b[28], adder27_cout);
+FullAdder1bit adder29(sum[29], adder29_cout, a[29], b[29], adder28_cout);
+FullAdder1bit adder30(sum[30], adder30_cout, a[30], b[30], adder29_cout);
+FullAdder1bit adder31(sum[31], carryout, a[31], b[31], adder30_cout);
+`XOR overflowxor (overflow, adder30_cout, carryout);
+end module
