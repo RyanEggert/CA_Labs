@@ -163,7 +163,7 @@ FullAdder1bit subtract27(sum[27], subtract27_cout, a[27], nb_27, subtract26_cout
 FullAdder1bit subtract28(sum[28], subtract28_cout, a[28], nb_28, subtract27_cout);
 FullAdder1bit subtract29(sum[29], subtract29_cout, a[29], nb_29, subtract28_cout);
 FullAdder1bit subtract30(sum[30], subtract30_cout, a[30], nb_30, subtract29_cout);
-FullAdder1bit subtract31(sum[31], subtract31_cout, a[31], nb_31, subtract30_cout);
+FullAdder1bit subtract31(sum[31], carryout, a[31], nb_31, subtract30_cout);
 xor overflowxor (overflow, subtract30_cout, carryout);
 endmodule
 
