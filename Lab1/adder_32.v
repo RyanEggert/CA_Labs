@@ -1,3 +1,13 @@
+`define NAND2 nand #20
+`define NOT not #10
+`define NOR2 nor #20
+`define XOR2 xor #60
+// An XOR2 can be constructed from four NAND gates arranged in three tiers. https://en.wikipedia.org/wiki/XOR_gate#/media/File:XOR_from_NAND.svg
+`define AND2 and #30
+// An AND2 can be constructed from a NAND gate in series with a NOT gate
+`define OR2 or #30
+// An OR2 can be constructed from a NOR gate in series with a NOT gate
+
 module FullAdder1bit
 (
     output sum,         //sum of a and b
@@ -11,11 +21,11 @@ wire xor1_O;
 wire and1_O;
 wire and2_O;
 
-xor xor1(xor1_O, a, b);
-xor xor2(sum, xor1_O, carryin);
-and and1(and1_O, xor1_O, carryin);
-and and2(and2_O, a, b);
-or or1(carryout, and1_O, and2_O);
+`XOR2 xor1(xor1_O, a, b);
+`XOR2 xor2(sum, xor1_O, carryin);
+`AND2 and1(and1_O, xor1_O, carryin);
+`AND2 and2(and2_O, a, b);
+`OR2 or1(carryout, and1_O, and2_O);
 endmodule
 
 module FullAdder32bit
@@ -91,7 +101,7 @@ FullAdder1bit adder28(sum[28], adder28_cout, a[28], b[28], adder27_cout);
 FullAdder1bit adder29(sum[29], adder29_cout, a[29], b[29], adder28_cout);
 FullAdder1bit adder30(sum[30], adder30_cout, a[30], b[30], adder29_cout);
 FullAdder1bit adder31(sum[31], carryout, a[31], b[31], adder30_cout);
-xor overflowxor (overflow, adder30_cout, carryout);
+`XOR2 overflowxor (overflow, adder30_cout, carryout);
 endmodule
 
 module test_adder32;
@@ -150,11 +160,11 @@ $display("%b | %b | 00000011111111111111111111111111 | 0                | 1     
 
 // Test overflow
 // Negative overflow
-//-2147483648 + -5 = 2147483643 OVERFLOW
+//-2147483648 + -5 = 2147483643 OVERFLOW CARRYOUT
 a=32'b10000000000000000000000000000000;b=32'b11111111111111111111111111111011; #1000
 $display("%b | %b | 01111111111111111111111111111011 | 1                | 1                 | %b | %b               | %b                |", a, b, sum, ovf, cout);
 
-//-5 + -21474836485 = 2147483643 OVERFLOW
+//-5 + -21474836485 = 2147483643 OVERFLOW CARRYOUT
 a=32'b11111111111111111111111111111011;b=32'b10000000000000000000000000000000; #1000
 $display("%b | %b | 01111111111111111111111111111011 | 1                | 1                 | %b | %b               | %b                |", a, b, sum, ovf, cout);
 
