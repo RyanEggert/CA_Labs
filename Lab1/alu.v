@@ -33,9 +33,11 @@ wire[33:0] NOR_out;
 
 wire[33:0] MUX_out;
 
-// Create and wire adder/subtractor
+// Create and wire ADD
 // Output bus wires 0-31 contain output, wire 32 is carryout, wire 33 is overflow
 FullAdder32bit ADD_module(ADD_out[31:0], ADD_out[32], ADD_out[33], operandA, operandB);
+// Create and wire SUB
+
 // Create and wire SLT
 
 // Create and wire AND
@@ -100,29 +102,29 @@ input[2:0]  ALUcommand
   end
 endmodule
 
+// test_ALUcontrolLUT no longer needed. MUX verified. Superseded by test_alu
+// module test_ALUcontrolLUT;
+// wire[33:0] out;
+// reg[33:0] in_ADD;
+// reg[33:0] in_SUB;
+// reg[33:0] in_SLT;
+// reg[33:0] in_XOR;
+// reg[33:0] in_AND;
+// reg[33:0] in_NAND;
+// reg[33:0] in_OR;
+// reg[33:0] in_NOR;
+// reg[2:0]  ALUcommand;
+// ALUcontrolLUT testALUlut(out, in_ADD, in_SUB, in_SLT, in_XOR, in_AND, in_NAND, in_NOR, in_OR, ALUcommand);
 
-module test_ALUcontrolLUT;
-wire[33:0] out;
-reg[33:0] in_ADD;
-reg[33:0] in_SUB;
-reg[33:0] in_SLT;
-reg[33:0] in_XOR;
-reg[33:0] in_AND;
-reg[33:0] in_NAND;
-reg[33:0] in_OR;
-reg[33:0] in_NOR;
-reg[2:0]  ALUcommand;
-ALUcontrolLUT testALUlut(out, in_ADD, in_SUB, in_SLT, in_XOR, in_AND, in_NAND, in_NOR, in_OR, ALUcommand);
+// initial begin
+// // Can I select an input?
+// $display("                                    Inputs                                    |                Output              |");
+// $display("CMD | in_ADD                             | in_NOR                             | Mux Output                         |");
+// ALUcommand=`ADD; in_ADD=34'b0111010000111010010011110100100101;  #1000
+// $display("%b | %b | %b | %b |", ALUcommand, in_ADD, in_NOR, out);
 
-initial begin
-// Can I select an input?
-$display("                                    Inputs                                    |                Output              |");
-$display("CMD | in_ADD                             | in_NOR                             | Mux Output                         |");
-ALUcommand=`ADD; in_ADD=34'b0111010000111010010011110100100101;  #1000
-$display("%b | %b | %b | %b |", ALUcommand, in_ADD, in_NOR, out);
-//more to come
-end
-endmodule
+// end
+// endmodule
 
 module test_alu;
 wire[31:0]    res;
@@ -135,14 +137,51 @@ reg[2:0]      cmd;
 ALU testALU(res, cout, zero, ovf, opA, opB, cmd);
 initial begin
 // Can I select an input?
-$display("                                    Inputs                                    |                              Outputs                        |");
-$display("command | operandA                         | operandB                         | result                           | carryout | overflow | zero |");
-cmd=`ADD; opA=32'b00000000000000000000000000000001; opB=32'b00000000000000000000000000000001; #50000
-$display("%b     | %b | %b | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
-cmd=`ADD; opA=32'b11111111111111111111111111111111; opB=32'b00000000000000000000000000000001; #50000
-$display("%b     | %b | %b | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
-cmd=`AND; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #50000
-$display("%b     | %b | %b | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
-//more to come
+$display("                                    Inputs                                    |                             Expected Outputs                  |                                Outputs                        |");
+$display("command | operandA                         | operandB                         | result                           | carryout | overflow | zero | result                           | carryout | overflow | zero |");
+
+// Add d1 + d1
+cmd=`ADD; opA=32'b00000000000000000000000000000001; opB=32'b00000000000000000000000000000001; #5000
+$display("%b     | %b | %b | 00000000000000000000000000000010 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Add d-1 and d1. Raise the zero flag
+cmd=`ADD; opA=32'b11111111111111111111111111111111; opB=32'b00000000000000000000000000000001; #5000
+$display("%b     | %b | %b | 00000000000000000000000000000000 | 0        | 0        | 1    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// -5 + -21474836485 = 2147483643 OVERFLOW CARRYOUT
+cmd=`ADD; opA=32'b11111111111111111111111111111011; opB=32'b10000000000000000000000000000000; #5000
+$display("%b     | %b | %b | 01111111111111111111111111111011 | 1        | 1        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check AND
+cmd=`AND; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #5000
+$display("%b     | %b | %b | 00011111000001100000100000000001 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check OR
+cmd=`OR; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #5000
+$display("%b     | %b | %b | 00111111111111110011111000110001 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check NOR
+cmd=`NOR; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #5000
+$display("%b     | %b | %b | 11000000000000001100000111001110 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check NAND
+cmd=`NAND; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #5000
+$display("%b     | %b | %b | 11100000111110011111011111111110 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check XOR
+cmd=`XOR; opA=32'b00011111000001100011100000100001; opB=32'b00111111111111110000111000010001; #5000
+$display("%b     | %b | %b | 00100000111110010011011000110000 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check SUB
+cmd=`SUB; opA=32'b00000000000000000000000000000100; opB=32'b00000000000000000000000000000011; #5000
+$display("%b     | %b | %b | 00000000000000000000000000000001 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check SLT true
+cmd=`SLT; opA=32'b00000000000000000000000000000001; opB=32'b00000100000000000000000000000001; #5000
+$display("%b     | %b | %b | 11111111111111111111111111111111 | 0        | 0        | 0    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
+
+// Check SLT false
+cmd=`SLT; opA=32'b00100000000000000000000000000001; opB=32'b00000000000000000000000000000001; #5000
+$display("%b     | %b | %b | 00000000000000000000000000000000 | 0        | 0        | 1    | %b | %b        | %b        | %b    |", cmd, opA, opB, res, cout, ovf, zero);
 end
 endmodule
