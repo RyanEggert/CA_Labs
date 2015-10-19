@@ -1,3 +1,5 @@
+/*do file for or, runs test function and adds waves for outputs */
+
 vdel -lib work -all
 vlib work
 vlog -reportprogress 300 -work work logicalgates.v

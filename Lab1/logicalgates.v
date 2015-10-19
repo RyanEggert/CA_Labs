@@ -1,7 +1,13 @@
+// This our logical subunit file. It includes the code and test functions for all the logical operations. 
+// All of th repetitive code in this file was written using python scripts. 
+// All the logical operations are completed with the basic gates NAND, NOT, and NOR so we defined them below and added an appropriate delay.
+
 `define NAND nand #20
 `define NOT not #10
 `define NOR nor #20
 
+
+//Module for the OR Operation. Calculated Or using Nor and Not. 
 
 module Or32Bit
 (
@@ -109,6 +115,8 @@ wire nor_31;
 endmodule
 
 
+// test module for OR. 
+
 module test_OR;
 
 reg [31:0] a;
@@ -157,7 +165,7 @@ $display("%b | %b | %b | 00000000000011000000000000000011 |", a, b, out);
 end
 endmodule
 
-
+//Module for the NOR Operation. Calculated Nor using just the Nor gate.
 
 module Nor32Bit
 (
@@ -199,6 +207,8 @@ module Nor32Bit
 `NOR nor31(out[31], a[31], b[31]);
 endmodule
 
+
+// test module for NOR. 
 
 module test_NOR;
 reg [31:0] a;
@@ -248,6 +258,7 @@ end
 endmodule
 
 
+//Module for the XOR Operation. Calculated Xor using 4 NAND gates for each bit more info below. 
 
 
 module Xor32Bit
@@ -512,8 +523,11 @@ wire nandaabb_31;
 `NAND nandab31(nandab_31, a[31], b[31]);
 `NAND nandaab31(nandaab_31, a[31], nandab_31);
 `NAND nandabb31(nandabb_31, nandab_31, b[31]);
-`NAND nandaabb31(out[31], nandaab_31, nandabb_31);endmodule
+`NAND nandaabb31(out[31], nandaab_31, nandabb_31);
+endmodule
 
+
+// test module for XOR. 
 
 module test_XOR;
 reg [31:0] a;
@@ -562,6 +576,7 @@ end
 endmodule
 
 
+//Module for the AND Operation. Calculated And using Nand and Not. 
 
 
 module AND32Bit
@@ -666,9 +681,11 @@ wire nand_31;
 `NAND nand30(nand_30, a[30], b[30]);
 `NOT and30(out[30], nand_30);
 `NAND nand31(nand_31, a[31], b[31]);
-`NOT and31(out[31], nand_31);endmodule
+`NOT and31(out[31], nand_31);
+endmodule
 
 
+// test module for AND. 
 
 module test_AND;
 
@@ -717,7 +734,7 @@ $display("%b | %b | %b | 00000000000000000000000000000011 |", a, b, out);
 end
 endmodule
 
-
+//Module for the NAND Operation. Calculated Nand using just the Nand gate.
 
 module NAND32Bit
 (
@@ -762,6 +779,7 @@ endmodule
 
 
 
+// test module for NAND. 
 
 module test_NAND;
 
