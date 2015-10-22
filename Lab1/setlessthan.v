@@ -196,9 +196,11 @@ module test_slt32;
 reg [31:0] a;
 reg [31:0] b;
 wire [31:0] r;
+wire cout;
+wire ovf;
 
 // Instantiate 32-bit subtractor here
-setlessthan test_SLT(a,b,carryout,overflow,r);
+setlessthan test_SLT(a,b,cout,ovf,r);
 
 initial begin
 $display("                               Inputs                               | Expected Output | Output |");
@@ -269,11 +271,11 @@ a=32'b00000000000000000000000000000001;b=32'b00000000000000000000000000000000; #
 $display("%b | %b | %b               | %b      |", a, b, 32'b0, r);
 
 // 0 < -1 => 0
-a=32'b00000000000000000000000000000000;b=32'b00000000000000000000000000000001; #10000
+a=32'b00000000000000000000000000000000;b=32'b11111111111111111111111111111111; #10000
 $display("%b | %b | %b               | %b      |", a, b, 32'b0, r);
 
 // -1 < 0 => 1
-a=32'b00000000000000000000000000000000;b=32'b00000000000000000000000000000001; #10000
+a=32'b11111111111111111111111111111111;b=32'b00000000000000000000000000000000; #10000
 $display("%b | %b | %b               | %b      |", a, b, 32'b1, r);
 
 // Comparing with SUB overflow 
