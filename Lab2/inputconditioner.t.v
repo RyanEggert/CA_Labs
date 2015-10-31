@@ -29,23 +29,40 @@ module testConditioner();
         // Synchronize, Clean, Preprocess (edge finding)
         #10
         // Test 1
-        $display("Running Test 1...");
+        $display("Starting Test 1 @time = %0dns...", $time);
         pin = 0;
         #60
         if (conditioned != 0) begin
             dutpassed = 0;
-            $display("Test 1 failed: unexpected conditioned signal");
+            $display("Test 1 failed: unexpected conditioned signal at time %0dns", $time);
         end else begin
             $display("PASS");
         end
 
         // Test 2
-        $display("Running Test 2...");
+        $display("Starting Test 2 @time = %0dns...", $time);
         pin = 1;
-        #60
+        #100
         if (conditioned != 1) begin
             dutpassed = 0;
-            $display("Test 2 failed: conditioned signal != 1");
+            $display("Test 2 failed: conditioned signal != 1 at time %0dns", $time);
+            $display("    [conditioned = %b]", conditioned);
+        end else begin
+            $display("PASS");
+        end
+
+
+        // Test 3
+        $display("Starting Test 3 @time = %0dns...", $time);
+        #4
+        pin = 0;
+        #6
+        #100
+        if (conditioned != 0) begin
+            dutpassed = 0;
+            $display("Test 3 failed: conditioned signal != 1 at time %0dns", $time);
+            $display("    [conditioned = %b]", conditioned);
+
         end else begin
             $display("PASS");
         end

@@ -7,7 +7,11 @@ sim:/dut/clk \
 sim:/dut/noisysignal \
 sim:/dut/conditioned \
 sim:/dut/positiveedge \
-sim:/dut/negativeedge
+sim:/dut/negativeedge 
+add wave -position insertpoint  \
+sim:/dut/conditioned \
+sim:/dut/synchronizer0 \
+sim:/dut/synchronizer1
 
 run 10000
 wave zoom full
