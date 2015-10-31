@@ -1,0 +1,27 @@
+Input Conditioner: 3 hours Done by Thursday 10/30
+While this is not a massive piece of code, there are many different pieces including the report that will require our thought and attention. 
+
+Shift Register: 7 hours Done by 10/31
+This will require more thought and code as well as about an hour of polish and report writing. 
+
+Prep for Mid-Point Deliverable: 1-2 hours Done by 11/2
+This is likely an overestimation, but the midpoint will require us to put pieces together, debug them, and show them to a ninja. 
+
+SPI Memory on FPGA: 2.5 hours Done by 11/4
+This will likely be an overestimation, but this just includes setting up the SPI memory. 
+
+SPI Memory Testing: 5 hours Done by 11/5
+This includes choosing the tests, running the tests, debugging with the tests and writing our test strategy, 
+
+Fault Injection 5 hours Done by 11/7
+This includes planning, running and writing about the fault. 
+
+Finishing up the report: 4 hours Done by 11/9
+
+These hours don’t line up for an easy split like before, but we hope to do the following:
+
+We’ll put the Input Conditioner and mid-Point Deliverable prep for one person while the other two work together on the Shift Register. 
+
+In the second half, we’ll have 2 people work together on SPI Memory and its testing and one person handle Fault Injection. 
+
+Finally, all team members will meet and work equally to finish off the lab. 

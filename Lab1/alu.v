@@ -22,7 +22,6 @@ input[2:0]      command
 
 wire[33:0] ADD_out;
 wire[33:0] SUB_out;
-
 wire[33:0] SLT_out;
 
 wire[33:0] XOR_out;
@@ -37,9 +36,9 @@ wire[33:0] MUX_out;
 // Output bus wires 0-31 contain output, wire 32 is carryout, wire 33 is overflow
 FullAdder32bit ADD_module(ADD_out[31:0], ADD_out[32], ADD_out[33], operandA, operandB);
 // Create and wire SUB
-
+FullSubtractor32bit SUB_module(SUB_out[31:0], operandA, operandB);
 // Create and wire SLT
-
+setlessthan SLT_module(SLT_out[31:0], operandA, operandB);
 // Create and wire AND
 AND32Bit AND_module(AND_out[31:0], operandA, operandB);
 // Create and wire OR
