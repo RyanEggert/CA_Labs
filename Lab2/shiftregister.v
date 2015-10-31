@@ -19,7 +19,24 @@ output              serialDataOut       // Positive edge synchronized
 );
 
     reg [width-1:0]      shiftregistermem;
+    
     always @(posedge clk) begin
-        // Your Code Here
+		if (peripheralClkEdge) begin
+			shiftregistermem = shiftregistermem<<1; 
+			shiftregistermem[0] = serialDataIn;
+		end
+
+		//In case of conflict, parallel changes will win because it overwrites the serial changes
+		if (parallelLoad) begin
+			shiftregistermem = parallelDataIn;
+		end
+
+
     end
+
+	assign parallelDataOut = shiftregistermem;
+	assign serialDataOut = shiftregistermem[width-1];
+
 endmodule
+
+
