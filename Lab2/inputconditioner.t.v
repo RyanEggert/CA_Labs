@@ -43,6 +43,7 @@ module testConditioner();
         $display("Starting Test 2 @time = %0dns...", $time);
         pin = 1;
         #100
+        #1
         if (conditioned != 1) begin
             dutpassed = 0;
             $display("Test 2 failed: conditioned signal != 1 at time %0dns", $time);
@@ -50,14 +51,16 @@ module testConditioner();
         end else begin
             $display("PASS");
         end
+        #9
 
 
-        // Test 3
+        // Test 3 - test synchronization
         $display("Starting Test 3 @time = %0dns...", $time);
         #4
         pin = 0;
         #6
         #100
+        #1
         if (conditioned != 0) begin
             dutpassed = 0;
             $display("Test 3 failed: conditioned signal != 1 at time %0dns", $time);
@@ -66,8 +69,75 @@ module testConditioner();
         end else begin
             $display("PASS");
         end
+        #9
+        #100
+
+
+        // Test 4 - test debounce
+        $display("Starting Test 4 @time = %0dns...", $time);
+        pin = 1;
+        #20
+        pin = 0;
+        #80
+        #1
+        if (conditioned != 0) begin
+            dutpassed = 0;
+            $display("Test 4 failed: conditioned signal != 1 at time %0dns", $time);
+            $display("    [conditioned = %b]", conditioned);
+
+        end else begin
+            $display("PASS");
+        end
+        #9
+
+        // Test 5 - test debounce
+        $display("Starting Test 5 @time = %0dns...", $time);
+        pin = 1;
+        #46
+        pin = 0;
+        #34
+        #1
+        if (conditioned != 0) begin
+            dutpassed = 0;
+            $display("Test 5 failed: conditioned signal != 1 at time %0dns", $time);
+            $display("    [conditioned = %b]", conditioned);
+
+        end else begin
+            $display("PASS");
+        end
+        #9
+        #20
+        // Test 6 - test positive edge detection
+        $display("Starting Test 6 @time = %0dns...", $time);
+        pin = 1;
+        #110
+        #1
+        if (rising != 1 || falling != 0) begin
+            dutpassed = 0;
+            $display("Test 6 failed @time %0dns", $time);
+            $display("    [rising = %b]", rising);
+        end else begin
+            $display("PASS");
+        end
+        #9
+
+        // Test 7 - test debounce
+        $display("Starting Test 7 @time = %0dns...", $time);
+        pin = 0;
+        #110
+        #1
+        if (falling != 1 || rising != 0) begin
+            dutpassed = 0;
+            $display("Test 7 failed");
+            $display("    [falling = %b]", conditioned);
+
+        end else begin
+            $display("PASS");
+        end
+        #9
 
         #10
+        $display("Tests Complete @time = %0dns.", $time);
         if (dutpassed == 1) begin
             $display("Device PASSED");
         end else begin

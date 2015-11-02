@@ -13,5 +13,5 @@ sim:/dut/conditioned \
 sim:/dut/synchronizer0 \
 sim:/dut/synchronizer1
 
-run 10000
+run 1000
 wave zoom full
