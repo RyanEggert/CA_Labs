@@ -1,21 +1,26 @@
-module midpoint();
+module midpoint(
+input clk,
+input button0,
+input switch0,
+input switch1,
+output[7:0] parallel_out
+);
 
-    reg             clk;
-    reg             peripheralClkEdge;
-    reg             parallelLoad;
-    wire[7:0]       parallelDataOut;
+    wire            peripheralClkEdge;
+    wire            parallelLoad;
     wire            serialDataOut;
-    reg[7:0]        parallelDataIn;
-    reg             serialDataIn; 
+    wire[7:0]       parallelDataIn;
+    wire            serialDataIn; 
     
-    reg conditioned_b0;
-    reg rising_b0;
+    assign parallelDataIn = 'hA5;
+    wire conditioned_b0;
+    wire rising_b0;
 
-    reg rising_s0; 
-    reg falling_s0;
+    wire rising_s0; 
+    wire falling_s0;
 
-    reg conditioned_s1;
-    reg falling_s1;
+    wire conditioned_s1;
+    wire falling_s1;
 
     inputconditioner but0(.clk(clk),
                          .noisysignal(button0),
@@ -26,7 +31,7 @@ module midpoint();
     inputconditioner swi0(.clk(clk),
                          .noisysignal(switch0),
                          .conditioned(serialDataIn),
-                         .positiveedge(rising_s0,
+                         .positiveedge(rising_s0),
                          .negativeedge(falling_s0));
 
     inputconditioner swi1(.clk(clk),
@@ -40,14 +45,9 @@ module midpoint();
 		           .parallelLoad(parallelLoad), 
 		           .parallelDataIn(parallelDataIn), 
 		           .serialDataIn(serialDataIn), 
-		           .parallelDataOut(parallelDataOut), 
+		           .parallelDataOut(parallel_out), 
 		           .serialDataOut(serialDataOut));
-
-
-    initial clk=0;
-    always #10 clk=!clk;    // 50MHz Clock
-    
-    
+  
 
 endmodule
 //------------------------------------------------------------------------
