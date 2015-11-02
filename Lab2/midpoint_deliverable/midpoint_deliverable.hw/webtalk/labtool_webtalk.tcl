@@ -45,6 +45,12 @@ webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-2760
 webtalk_add_data -client project -key cpu_speed -value "2394 MHz" -context "user_environment"
 webtalk_add_data -client project -key total_processors -value "1" -context "user_environment"
 webtalk_add_data -client project -key system_ram -value "8.000 GB" -context "user_environment"
+webtalk_add_data -client project -key os_name -value "Microsoft Windows 7 , 64-bit" -context "user_environment"
+webtalk_add_data -client project -key os_release -value "Service Pack 1  (build 7601)" -context "user_environment"
+webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-2760QM CPU @ 2.40GHz" -context "user_environment"
+webtalk_add_data -client project -key cpu_speed -value "2394 MHz" -context "user_environment"
+webtalk_add_data -client project -key total_processors -value "1" -context "user_environment"
+webtalk_add_data -client project -key system_ram -value "8.000 GB" -context "user_environment"
 webtalk_register_client -client labtool
 webtalk_add_data -client labtool -key pgmcnt -value "00:00:00" -context "labtool\\usage"
 webtalk_add_data -client labtool -key cable -value "Digilent/Zybo/15000000" -context "labtool\\usage"
@@ -59,5 +65,8 @@ webtalk_add_data -client labtool -key pgmcnt -value "01:00:00" -context "labtool
 webtalk_add_data -client labtool -key cable -value "Digilent/Zybo/15000000" -context "labtool\\usage"
 webtalk_add_data -client labtool -key chain -value "0000400013722093" -context "labtool\\usage"
 webtalk_add_data -client labtool -key pgmcnt -value "01:00:00" -context "labtool\\usage"
-webtalk_transmit -clientid 4257394839 -regid "211095013_0_0_420" -xml C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.xml -html C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.html -wdm C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.wdm -intro "<H3>LABTOOL Usage Report</H3><BR>"
+webtalk_add_data -client labtool -key cable -value "Digilent/Zybo/15000000" -context "labtool\\usage"
+webtalk_add_data -client labtool -key chain -value "0000400013722093" -context "labtool\\usage"
+webtalk_add_data -client labtool -key pgmcnt -value "02:00:00" -context "labtool\\usage"
+webtalk_transmit -clientid 4145593747 -regid "211095013_0_0_420" -xml C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.xml -html C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.html -wdm C:/CA_Labs/Lab2/midpoint_deliverable/midpoint_deliverable.hw/webtalk/usage_statistics_ext_labtool.wdm -intro "<H3>LABTOOL Usage Report</H3><BR>"
 webtalk_terminate
