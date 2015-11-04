@@ -44,9 +44,18 @@ module testFSM();
 			$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
 			$display("next state: %d", testFSM.dut.next_state);
 		end
-		#200
-		$display("current state: %d", testFSM.dut.current_state);
-
+		#200	//delay to allow it to go to GOT if it's planning on going anywhere
+		if (testFSM.dut.current_state != GET) begin 
+			dutpassed = 0;
+			$display("Test 1 failed: CS pin was high but the current state was not GET (0)");	
+			$display("current state: %d", testFSM.dut.current_state);			
+		end
+		if (testFSM.dut.next_state != GET) begin
+			dutpassed = 0;
+			$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
+			$display("next state: %d", testFSM.dut.next_state);
+		end
+		//Test 2
 		#10
 		$display("Tests complete @time = %0dns", $time);
 		if (dutpassed == 1) begin
