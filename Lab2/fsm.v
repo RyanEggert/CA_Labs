@@ -1,4 +1,4 @@
-module finite_state_machine
+module fsm
 #(parameter width = 8)
 (
 	input 		cs_pin,				//chip select
@@ -17,6 +17,10 @@ module finite_state_machine
 	reg [2:0]			counter;			//counter to count up to 8 bits before action (used in GET, WRITE1, READ3)
 
 	parameter GET = 3'b000, GOT = 3'b001, READ1 = 3'b010, READ2 = 3'b011, READ3 = 3'b100, WRITE1 = 3'b101, WRITE2 = 3'b110, DONE = 3'b111;
+
+	initial begin
+		assign current_state = GET;
+	end
 
 	always @(posedge reset_counter) begin
 		counter <= 3'b000;
