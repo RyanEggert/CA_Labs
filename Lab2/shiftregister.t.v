@@ -36,7 +36,7 @@ module testshiftregister();
     if (parallelDataOut != 8'd0 || serialDataOut!= 0)
         $display("Test Case 0 Failed");
     
-    $display("Test Case 1: Serial In, Parallel Out ");
+    $display("Test Case 1: Serial In");
     
     serialDataIn = 1;
     peripheralClkEdge = 1;
@@ -65,7 +65,7 @@ module testshiftregister();
     parallelLoad = 1;
     #40
     
-    $display("Test Case 2: Parallel In, Serial Out");
+    $display("Test Case 2: Parallel In");
 
     parallelDataIn = 8'd128;
     parallelLoad = 1;
