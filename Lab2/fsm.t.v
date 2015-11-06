@@ -39,23 +39,39 @@ module testFSM();
 			$display("Test 1 failed: CS pin was high but the current state was not GET (0)");	
 			$display("current state: %d", testFSM.dut.current_state);			
 		end
-		if (testFSM.dut.next_state != GET) begin
-			dutpassed = 0;
-			$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
-			$display("next state: %d", testFSM.dut.next_state);
-		end
-		#200	//delay to allow it to go to GOT if it's planning on going anywhere
+		// if (testFSM.dut.next_state != GET) begin
+		// 	dutpassed = 0;
+		// 	$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
+		// 	$display("next state: %d", testFSM.dut.next_state);
+		// end
+		#160	//delay to allow it to go to GOT if it's planning on going anywhere
 		if (testFSM.dut.current_state != GET) begin 
 			dutpassed = 0;
 			$display("Test 1 failed: CS pin was high but the current state was not GET (0)");	
 			$display("current state: %d", testFSM.dut.current_state);			
 		end
-		if (testFSM.dut.next_state != GET) begin
+		// if (testFSM.dut.next_state != GET) begin
+		// 	dutpassed = 0;
+		// 	$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
+		// 	$display("next state: %d", testFSM.dut.next_state);
+		// end
+		//Test 2 - if CS is low, we should be in GET; then after 8 cycles we should be in GOT
+		$display("Starting Test 2...");
+		cs_pin = 0;
+		#20
+		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
-			$display("Test 1 failed: CS pin was high but the next state was not GET (0)");	
-			$display("next state: %d", testFSM.dut.next_state);
+			$display("Test 2 failed: CS pin set from high to low with no delay, but the current state was not GET (0)");
+			$display("current_state: %d", testFSM.dut.current_state);
 		end
-		//Test 2
+		// if (testFSM.dut.next_state != GET) begin
+		// 	dutpassed = 0;
+		// 	$display("Test 2 failed: CS pin was set from high to low with no delay, but the next state was not GET (0)");	
+		// 	$display("next state: %d", testFSM.dut.next_state);
+		// end		
+		#200	//delay to switch
+
+		//The end!
 		#10
 		$display("Tests complete @time = %0dns", $time);
 		if (dutpassed == 1) begin
