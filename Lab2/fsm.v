@@ -32,19 +32,23 @@ module fsm
 			reset_counter <= 1;
 		end
 		else begin
+			$display(current_state);
 			case(current_state)
 			GET:	begin 
 						if (counter == 8) begin
 							current_state <= GOT;
 							reset_counter <= 1;
+							$display("got");
 						end
 						else begin
 							current_state <= GET;
 							counter <= counter + 1;
 							reset_counter <= 0;
+							$display("get");
 						end
 					end
 			GOT: 	begin
+						$display("gotten");
 						reset_counter <= 1;
 						addr_wren <= 1;
 						if (rw == 1) begin
