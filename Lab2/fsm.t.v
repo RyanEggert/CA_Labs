@@ -77,6 +77,27 @@ module testFSM();
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
 
+		//Test 3 - if read/write is on, we should be in READ1; else we should be in WRITE
+		$display("Starting Test 3...");
+		rw = 1;
+		#20
+		if (testFSM.dut.current_state != READ1) begin
+			dutpassed = 0;
+			$display("Test 3 failed: Read/Write set high, but the current state is not READ1 (2)");
+			$display("current_state: %d", testFSM.dut.current_state);
+		end
+
+		//Test 4 - a single clock cycle from READ1 should take us to READ2
+		$display("Starting Test 4...")
+		#20
+		if (testFSM.dut.current_state != READ2) begin
+			dutpassed = 0;
+			$display("Test 4 failed: A clock cycle passed in READ 1, but the current state is not READ2 (3)");
+			$display("current_state: %d", testFSM.dut.current_state);
+		end
+		#20
+		$display("current_state: %d", testFSM.dut.current_state);
+
 		//The end!
 		#10
 		$display("Tests complete @time = %0dns", $time);
