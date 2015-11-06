@@ -11,5 +11,5 @@ sim:/dut/current_state \
 sim:/dut/reset_counter \
 sim:/dut/counter
 
-run 1000
+run 2000
 wave zoom full
