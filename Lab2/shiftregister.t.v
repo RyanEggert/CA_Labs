@@ -61,6 +61,12 @@ module testshiftregister();
     if (parallelDataOut != 8'd10 || serialDataOut!= 0)
         $display("Test Case 1 Failed");
     
+    #80
+    
+    // Added 1, 0, 1, 0 to the shift register through serial input, checking that they were saved correctly in order and MSB is correct
+    if (parallelDataOut != 8'd10 || serialDataOut!= 1)
+        $display("Test Case 1 Failed");
+    
     parallelDataIn = 8'd0; 
     parallelLoad = 1;
     #40
