@@ -60,7 +60,6 @@ module testFSM();
 		$display("Starting Test 2...");
 		cs_pin = 0;
 		#20
-		$display("counter before: %d", testFSM.dut.counter);
 		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
 			$display("Test 2 failed: CS pin set from high to low with no delay, but the current state is not GET (0)");
@@ -71,9 +70,7 @@ module testFSM();
 		// 	$display("Test 2 failed: CS pin was set from high to low with no delay, but the next state was not GET (0)");	
 		// 	$display("next state: %d", testFSM.dut.next_state);
 		// end		
-		#500	//delay to switch states to next state
-		$display("counter after: %d", testFSM.dut.counter);
-		$display("address write enable: %d", testFSM.dut.addr_wren);
+		#160	//delay to switch states to next state
 		if (testFSM.dut.current_state != GOT) begin
 			dutpassed = 0;
 			$display("Test 2 failed: CS pin set from high to low with proper delay, but the current state is not GOT (1)");

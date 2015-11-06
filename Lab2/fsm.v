@@ -19,7 +19,7 @@ module fsm
 	parameter GET = 3'b000, GOT = 3'b001, READ1 = 3'b010, READ2 = 3'b011, READ3 = 3'b100, WRITE1 = 3'b101, WRITE2 = 3'b110, DONE = 3'b111;
 
 	initial begin
-		assign current_state = GET;
+		current_state = GET;
 	end
 
 	always @(posedge reset_counter) begin
@@ -32,23 +32,19 @@ module fsm
 			reset_counter <= 1;
 		end
 		else begin
-			$display(current_state);
 			case(current_state)
 			GET:	begin 
 						if (counter == 8) begin
-							current_state <= GOT;
+							current_state = GOT;
 							reset_counter <= 1;
-							$display("got");
 						end
 						else begin
 							current_state <= GET;
 							counter <= counter + 1;
 							reset_counter <= 0;
-							$display("get");
 						end
 					end
 			GOT: 	begin
-						$display("gotten");
 						reset_counter <= 1;
 						addr_wren <= 1;
 						if (rw == 1) begin
