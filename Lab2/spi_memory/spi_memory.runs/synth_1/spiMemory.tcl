@@ -16,11 +16,11 @@ set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:zybo:part0:1.0 [current_project]
 set_property ip_repo_paths c:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2 [current_project]
 read_verilog -library xil_defaultlib {
-  C:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2/shiftregister.v
-  C:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2/inputconditioner.v
-  C:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2/datamemory.v
-  C:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2/fsm.v
-  C:/CA_Labs/Lab2/spi_memory/spi_memory.srcs/sources_1/imports/Lab2/spimemory.v
+  C:/CA_Labs/Lab2/datamemory.v
+  C:/CA_Labs/Lab2/inputconditioner.v
+  C:/CA_Labs/Lab2/fsm.v
+  C:/CA_Labs/Lab2/shiftregister.v
+  C:/CA_Labs/Lab2/spimemory.v
 }
 synth_design -top spiMemory -part xc7z010clg400-1
 write_checkpoint -noxdef spiMemory.dcp

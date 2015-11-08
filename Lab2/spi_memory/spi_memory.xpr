@@ -19,46 +19,36 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/Lab2/shiftregister.v">
+      <File Path="$PPRDIR/../datamemory.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../shiftregister.v"/>
-          <Attr Name="ImportTime" Val="1446602737"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Lab2/inputconditioner.v">
+      <File Path="$PPRDIR/../inputconditioner.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../inputconditioner.v"/>
-          <Attr Name="ImportTime" Val="1446602737"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Lab2/datamemory.v">
+      <File Path="$PPRDIR/../fsm.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../datamemory.v"/>
-          <Attr Name="ImportTime" Val="1446311454"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Lab2/fsm.v">
+      <File Path="$PPRDIR/../shiftregister.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../fsm.v"/>
-          <Attr Name="ImportTime" Val="1447007549"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Lab2/spimemory.v">
+      <File Path="$PPRDIR/../spimemory.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../spimemory.v"/>
-          <Attr Name="ImportTime" Val="1447010112"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -122,7 +112,7 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" SynthRun="synth_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
         <Step Id="init_design"/>
@@ -135,6 +125,7 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
   </Runs>
 </Project>

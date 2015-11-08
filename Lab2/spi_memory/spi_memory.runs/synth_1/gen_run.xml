@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1447016888">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1447017255">
   <File Type="RDS-DCP" Name="spiMemory.dcp"/>
   <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
   <File Type="RDS-UTIL-PB" Name="spiMemory_utilization_synth.pb"/>
@@ -13,46 +13,36 @@
   <File Type="VDS-TIMING-PB" Name="spiMemory_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/Lab2/shiftregister.v">
+    <File Path="$PPRDIR/../datamemory.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../shiftregister.v"/>
-        <Attr Name="ImportTime" Val="1446602737"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Lab2/inputconditioner.v">
+    <File Path="$PPRDIR/../inputconditioner.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../inputconditioner.v"/>
-        <Attr Name="ImportTime" Val="1446602737"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Lab2/datamemory.v">
+    <File Path="$PPRDIR/../fsm.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../datamemory.v"/>
-        <Attr Name="ImportTime" Val="1446311454"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Lab2/fsm.v">
+    <File Path="$PPRDIR/../shiftregister.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../fsm.v"/>
-        <Attr Name="ImportTime" Val="1447007549"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Lab2/spimemory.v">
+    <File Path="$PPRDIR/../spimemory.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../spimemory.v"/>
-        <Attr Name="ImportTime" Val="1447010112"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
