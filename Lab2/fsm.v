@@ -2,7 +2,8 @@ module fsm
 #(parameter width = 8)
 (
 	input 		cs_pin,				//chip select
-	input 		sclk_pin,			//s clock
+	input		clk,				//fast clock
+	input 		sclk_pin,			//slow clock -- used for counter increment b/c it is high when data comes in on the shift register
 	input 		rw,					//read/write; the 8th bit coming out of the parallel out on the shift register (aka shift register out p0)
 	output reg	shift_wren,			//shift register write enable
 	output reg 	reset_counter,		//reset counter
@@ -26,7 +27,7 @@ module fsm
 		counter <= 4'b0000;
 	end
 
-	always @(posedge sclk_pin) begin
+	always @(posedge clk) begin
 		if (cs_pin == 1) begin
 			current_state <= GET;
 			reset_counter <= 1;
@@ -35,10 +36,10 @@ module fsm
 			case(current_state)
 			GET:	begin 
 						if (counter == 8) begin
-							current_state = GOT;
-							reset_counter <= 1;
+							current_state <= GOT;		//should this be asynchronous or synchronous?
+							// reset_counter <= 1;
 						end
-						else begin
+						else if (sclk_pin) begin
 							current_state <= GET;
 							counter <= counter + 1;
 							reset_counter <= 0;
@@ -69,7 +70,7 @@ module fsm
 						if (counter == 8) begin
 							current_state <= DONE;
 						end
-						else begin
+						else if (sclk_pin) begin
 							current_state <= READ3;
 							counter <= counter + 1;
 						end
@@ -79,7 +80,7 @@ module fsm
 						if (counter == 8) begin
 							current_state <= WRITE2;
 						end
-						else begin
+						else if (sclk_pin) begin
 							current_state <= WRITE1;
 							counter <= counter + 1;
 						end
