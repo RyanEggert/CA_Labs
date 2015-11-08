@@ -14,7 +14,6 @@ module fsm
 );
 
 	reg [width-1:0]     current_state;		//Massachusetts
-	// reg [width-1:0]		next_state;			//"Wisconsin is the future"	-Ryan
 	reg [3:0]			counter;			//counter to count up to 8 bits before action (used in GET, WRITE1, READ3)
 
 	parameter GET = 3'b000, GOT = 3'b001, READ1 = 3'b010, READ2 = 3'b011, READ3 = 3'b100, WRITE1 = 3'b101, WRITE2 = 3'b110, DONE = 3'b111;
@@ -36,8 +35,7 @@ module fsm
 			case(current_state)
 			GET:	begin 
 						if (counter == 8) begin
-							current_state <= GOT;		//should this be asynchronous or synchronous?
-							// reset_counter <= 1;
+							current_state <= GOT;
 						end
 						else if (sclk_pin) begin
 							current_state <= GET;
@@ -100,7 +98,6 @@ module fsm
 						end
 					end
 			endcase
-			// current_state <= next_state;
 		end
 	end
 

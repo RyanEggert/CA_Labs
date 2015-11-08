@@ -75,7 +75,7 @@ fsm spi_statemachine(.cs_pin(cs_clean),
 						.addr_wren(ad_wren),
 						.miso_en(miso_en)); //TODO: RW
 
-//assign miso_pin = (miso_en) ? miso_buff_in : 1'bz; // When the MISO buffer is enabled, output miso_buff_in from the flip-flop. Otherwise output z.
+assign miso_pin = (miso_en) ? miso_buff_in : 1'bz; // When the MISO buffer is enabled, output miso_buff_in from the flip-flop. Otherwise output z.
 
 always @(posedge clk) begin
 	//address latch
@@ -85,10 +85,6 @@ always @(posedge clk) begin
 	//dff miso_flipflop
 	if (sclk_negedge) begin
 		miso_buff_in <= sr_serout;
-	end
-	//miso_pin write
-	if (miso_en) begin
-		#20 miso_pin <= miso_buff_in;	//wait one clock cycle and then write to output
 	end
 end
 
