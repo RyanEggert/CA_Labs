@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Sun Nov 08 16:17:31 2015
+| Date         : Sun Nov 08 16:51:18 2015
 | Host         : 1FXPFV1 running 64-bit Service Pack 1  (build 7601)
 | Command      : report_timing_summary -warn_on_violation -max_paths 10 -file spiMemory_timing_summary_routed.rpt -rpx spiMemory_timing_summary_routed.rpx
 | Design       : spiMemory
@@ -50,7 +50,7 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 45 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+ There are 43 register/latch pins with no clock driven by root clock pin: clk (HIGH)
 
  There are 4 register/latch pins with no clock driven by root clock pin: sclk_conditioner/conditioned_reg/C (HIGH)
 
@@ -67,7 +67,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 95 pins that are not constrained for maximum delay. (HIGH)
+ There are 88 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 

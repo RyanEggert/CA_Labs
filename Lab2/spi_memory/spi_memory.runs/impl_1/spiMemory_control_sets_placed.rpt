@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Sun Nov 08 16:16:57 2015
+| Date         : Sun Nov 08 16:50:43 2015
 | Host         : 1FXPFV1 running 64-bit Service Pack 1  (build 7601)
 | Command      : report_control_sets -verbose -file spiMemory_control_sets_placed.rpt
 | Design       : spiMemory
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |     6 |
-| Minimum Number of register sites lost to control set restrictions |     9 |
+| Number of unique control sets                                     |     5 |
+| Minimum Number of register sites lost to control set restrictions |    10 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,27 +33,26 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              24 |            9 |
+| No           | No                    | No                     |              22 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               8 |            2 |
-| Yes          | No                    | No                     |               8 |            1 |
+| Yes          | No                    | No                     |              16 |            2 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               7 |            1 |
+| Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+------------------------------+------------------------------------------+-------------------------------------+------------------+----------------+
-|         Clock Signal         |               Enable Signal              |           Set/Reset Signal          | Slice Load Count | Bel Load Count |
-+------------------------------+------------------------------------------+-------------------------------------+------------------+----------------+
-|  clk_IBUF_BUFG               | spi_statemachine/dm_wren                 |                                     |                1 |              2 |
-|  clk_IBUF_BUFG               |                                          | sclk_conditioner/counter[1]_i_1_n_0 |                1 |              4 |
-|  sclk_conditioner/sclk_clean |                                          | spi_statemachine/reset_counter      |                1 |              4 |
-|  clk_IBUF_BUFG               | spi_statemachine/shiftregistermem_reg[7] | spi_statemachine/sr_wren            |                1 |              7 |
-|  clk_IBUF_BUFG               | spi_statemachine/E[0]                    |                                     |                1 |              8 |
-|  clk_IBUF_BUFG               |                                          |                                     |                9 |             24 |
-+------------------------------+------------------------------------------+-------------------------------------+------------------+----------------+
++------------------------------+---------------------------------------------+-------------------------------------+------------------+----------------+
+|         Clock Signal         |                Enable Signal                |           Set/Reset Signal          | Slice Load Count | Bel Load Count |
++------------------------------+---------------------------------------------+-------------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG               |                                             | sclk_conditioner/counter[1]_i_1_n_0 |                1 |              4 |
+|  sclk_conditioner/sclk_clean |                                             | spi_statemachine/reset_counter      |                1 |              4 |
+|  clk_IBUF_BUFG               | spi_statemachine/shiftregistermem_reg[7][0] |                                     |                1 |              8 |
+|  clk_IBUF_BUFG               | spi_statemachine/E[0]                       |                                     |                1 |              8 |
+|  clk_IBUF_BUFG               |                                             |                                     |                8 |             22 |
++------------------------------+---------------------------------------------+-------------------------------------+------------------+----------------+
 
 

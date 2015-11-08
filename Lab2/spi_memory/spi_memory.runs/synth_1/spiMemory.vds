@@ -2,8 +2,8 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Sun Nov 08 16:14:16 2015
-# Process ID: 14204
+# Start of session at: Sun Nov 08 16:49:38 2015
+# Process ID: 10404
 # Log file: C:/CA_Labs/Lab2/spi_memory/spi_memory.runs/synth_1/spiMemory.vds
 # Journal file: C:/CA_Labs/Lab2/spi_memory/spi_memory.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
@@ -14,25 +14,23 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 WARNING: [Synth 8-2507] parameter declaration becomes local in fsm with formal parameter declaration list [C:/CA_Labs/Lab2/fsm.v:19]
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 254.832 ; gain = 74.441
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 255.262 ; gain = 74.207
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'spiMemory' [C:/CA_Labs/Lab2/spimemory.v:5]
 INFO: [Synth 8-638] synthesizing module 'inputconditioner' [C:/CA_Labs/Lab2/inputconditioner.v:8]
 	Parameter counterwidth bound to: 3 - type: integer 
 	Parameter waittime bound to: 3 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'inputconditioner' (1#1) [C:/CA_Labs/Lab2/inputconditioner.v:8]
-WARNING: [Synth 8-350] instance 'mosi_conditioner' of module 'inputconditioner' requires 5 connections, but only 3 given [C:/CA_Labs/Lab2/spimemory.v:35]
-WARNING: [Synth 8-350] instance 'cs_conditioner' of module 'inputconditioner' requires 5 connections, but only 3 given [C:/CA_Labs/Lab2/spimemory.v:45]
+WARNING: [Synth 8-350] instance 'mosi_conditioner' of module 'inputconditioner' requires 5 connections, but only 3 given [C:/CA_Labs/Lab2/spimemory.v:37]
+WARNING: [Synth 8-350] instance 'cs_conditioner' of module 'inputconditioner' requires 5 connections, but only 3 given [C:/CA_Labs/Lab2/spimemory.v:47]
 INFO: [Synth 8-638] synthesizing module 'datamemory' [C:/CA_Labs/Lab2/datamemory.v:8]
 	Parameter addresswidth bound to: 7 - type: integer 
 	Parameter depth bound to: 128 - type: integer 
 	Parameter width bound to: 8 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'datamemory' (2#1) [C:/CA_Labs/Lab2/datamemory.v:8]
-WARNING: [Synth 8-689] width (1) of port connection 'dataOut' does not match port width (8) of module 'datamemory' [C:/CA_Labs/Lab2/spimemory.v:51]
 INFO: [Synth 8-638] synthesizing module 'shiftregister' [C:/CA_Labs/Lab2/shiftregister.v:9]
 	Parameter width bound to: 8 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'shiftregister' (3#1) [C:/CA_Labs/Lab2/shiftregister.v:9]
-WARNING: [Synth 8-689] width (1) of port connection 'parallelDataIn' does not match port width (8) of module 'shiftregister' [C:/CA_Labs/Lab2/spimemory.v:60]
 INFO: [Synth 8-638] synthesizing module 'fsm' [C:/CA_Labs/Lab2/fsm.v:1]
 	Parameter width bound to: 8 - type: integer 
 	Parameter GET bound to: 3'b000 
@@ -53,17 +51,17 @@ WARNING: [Synth 8-3331] design spiMemory has unconnected port leds[1]
 WARNING: [Synth 8-3331] design spiMemory has unconnected port leds[0]
 WARNING: [Synth 8-3331] design spiMemory has unconnected port fault_pin
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 271.813 ; gain = 91.422
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 272.242 ; gain = 91.188
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 271.813 ; gain = 91.422
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 272.242 ; gain = 91.188
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 271.813 ; gain = 91.422
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 272.242 ; gain = 91.188
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Synth 8-5544] ROM "conditioned" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
@@ -92,7 +90,7 @@ INFO: [Synth 8-5562] The signal memory_reg is implemented as block RAM but is be
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 280.168 ; gain = 99.777
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 280.895 ; gain = 99.840
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -179,7 +177,7 @@ BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 408.652 ; gain = 228.262
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 410.035 ; gain = 228.980
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -189,28 +187,28 @@ WARNING: [Synth 8-3331] design spiMemory has unconnected port leds[1]
 WARNING: [Synth 8-3331] design spiMemory has unconnected port leds[0]
 WARNING: [Synth 8-3331] design spiMemory has unconnected port fault_pin
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 409.934 ; gain = 229.543
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 411.301 ; gain = 230.246
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 409.934 ; gain = 229.543
+Finished Parallel Reinference  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 411.301 ; gain = 230.246
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-WARNING: [Synth 8-3936] Found unconnected internal register 'spi_dm/dataOut_reg' and it is trimmed from '8' to '1' bits. [C:/CA_Labs/Lab2/datamemory.v:28]
+INFO: [Synth 8-5562] The signal spi_dm/memory_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (7 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
-Distributed RAM: 
-+------------+-------------------+-----------+----------------------+-----------------+-------------------+
-|Module Name | RTL Object        | Inference | Size (Depth x Width) | Primitives      | Hierarchical Name | 
-+------------+-------------------+-----------+----------------------+-----------------+-------------------+
-|spiMemory   | spi_dm/memory_reg | Implied   | 128 x 1              | RAM128X1S x 1   | spiMemory/ram     | 
-+------------+-------------------+-----------+----------------------+-----------------+-------------------+
+Block RAM:
++------------+-------------------+------------------------+---+---+------------------------+---+---+---------+--------+--------+---------------------+
+|Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | OUT_REG | RAMB18 | RAMB36 | Hierarchical Name   | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+---------+--------+--------+---------------------+
+|spiMemory   | spi_dm/memory_reg | 128 x 8(READ_FIRST)    | W | R |                        |   |   | Port A  | 1      | 0      | spiMemory/extram__2 | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+---------+--------+--------+---------------------+
 
-Note: The table shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once. "Hierarchical Name" reflects the Distributed RAM name as it appears in the hierarchical module and only part of it is displayed.
+Note: The table shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. "Hierarchical Name" reflects the Block RAM name as it appears in the hierarchical module and only part of it is displayed.
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
@@ -222,22 +220,22 @@ WARNING: [Synth 8-3332] Sequential element (\mosi_conditioner/counter_reg[2] ) i
 WARNING: [Synth 8-3332] Sequential element (\sclk_conditioner/counter_reg[2] ) is unused and will be removed from module spiMemory.
 WARNING: [Synth 8-3332] Sequential element (\cs_conditioner/counter_reg[2] ) is unused and will be removed from module spiMemory.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 430.246 ; gain = 249.191
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -248,8 +246,9 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance \spi_dm/memory_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -267,7 +266,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -280,7 +279,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -292,13 +291,13 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Start Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -311,52 +310,51 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+----------+------+
-|      |Cell      |Count |
-+------+----------+------+
-|1     |BUFG      |     1|
-|2     |LUT1      |     4|
-|3     |LUT2      |     4|
-|4     |LUT3      |     4|
-|5     |LUT4      |    10|
-|6     |LUT5      |     9|
-|7     |LUT6      |     4|
-|8     |RAM128X1S |     1|
-|9     |FDRE      |    47|
-|10    |IBUF      |     4|
-|11    |OBUFT     |     5|
-+------+----------+------+
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |LUT1     |     4|
+|3     |LUT2     |     4|
+|4     |LUT3     |    12|
+|5     |LUT4     |    10|
+|6     |LUT5     |     8|
+|7     |LUT6     |     4|
+|8     |RAMB18E1 |     1|
+|9     |FDRE     |    46|
+|10    |IBUF     |     4|
+|11    |OBUFT    |     5|
++------+---------+------+
 
 Report Instance Areas: 
 +------+-------------------+-------------------+------+
 |      |Instance           |Module             |Cells |
 +------+-------------------+-------------------+------+
-|1     |top                |                   |    93|
+|1     |top                |                   |    99|
 |2     |  cs_conditioner   |inputconditioner   |     8|
 |3     |  mosi_conditioner |inputconditioner_0 |     8|
 |4     |  sclk_conditioner |inputconditioner_1 |    13|
-|5     |  spi_dm           |datamemory         |     2|
-|6     |  spi_shiftreg     |shiftregister      |    10|
+|5     |  spi_dm           |datamemory         |     1|
+|6     |  spi_shiftreg     |shiftregister      |    17|
 |7     |  spi_statemachine |fsm                |    33|
 +------+-------------------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 429.773 ; gain = 237.648
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 429.773 ; gain = 249.383
+Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 430.246 ; gain = 237.492
+Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 430.246 ; gain = 249.191
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1 instances were transformed.
-  RAM128X1S => RAM128X1S (MUXF7, RAMS64E, RAMS64E): 1 instances
+No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-33 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+35 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 489.566 ; gain = 297.441
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 489.566 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 08 16:14:37 2015...
+synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 490.930 ; gain = 298.266
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 490.930 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 08 16:49:58 2015...

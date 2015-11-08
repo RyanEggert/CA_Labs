@@ -30,6 +30,8 @@ reg[7:0] ad_q;     // Data output from the address latch
 
 reg miso_buff_in;  // Input to MISO buffer
 
+wire[7:0] dm_out;
+
 
 // Create & connect three separate input conditioners. MOSI, SCLK, and CS
 inputconditioner mosi_conditioner(.clk(clk),
