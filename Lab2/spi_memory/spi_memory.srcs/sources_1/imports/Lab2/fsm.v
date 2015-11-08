@@ -23,10 +23,19 @@ module fsm
 		current_state = GET;
 	end
 
-	always @(posedge reset_counter) begin
-		counter <= 4'b0000;
-	end
+//	always @(posedge reset_counter) begin
+//		counter <= 4'b0000;
+//	end
 
+
+    always @(posedge sclk_pin) begin
+        if (reset_counter == 1) begin
+            counter <= 4'b0;
+        end else begin
+            counter <= counter + 1
+        end
+    end
+    
 	always @(posedge clk) begin
 		if (cs_pin == 1) begin
 			current_state <= GET;
@@ -41,7 +50,6 @@ module fsm
 						end
 						else if (sclk_pin) begin
 							current_state <= GET;
-							counter <= counter + 1;
 							reset_counter <= 0;
 						end
 					end
@@ -72,7 +80,6 @@ module fsm
 						end
 						else if (sclk_pin) begin
 							current_state <= READ3;
-							counter <= counter + 1;
 						end
 					end
 			WRITE1:	begin
@@ -82,7 +89,6 @@ module fsm
 						end
 						else if (sclk_pin) begin
 							current_state <= WRITE1;
-							counter <= counter + 1;
 						end
 					end
 			WRITE2:	begin
