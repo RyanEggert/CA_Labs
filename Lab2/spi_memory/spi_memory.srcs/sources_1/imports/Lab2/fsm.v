@@ -32,7 +32,7 @@ module fsm
         if (reset_counter == 1) begin
             counter <= 4'b0;
         end else begin
-            counter <= counter + 1
+            counter <= counter + 1;
         end
     end
     
