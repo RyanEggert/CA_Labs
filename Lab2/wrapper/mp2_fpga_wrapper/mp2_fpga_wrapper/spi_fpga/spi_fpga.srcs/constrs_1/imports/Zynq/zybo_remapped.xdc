@@ -18,8 +18,8 @@
 
 ##Switches
 ##IO_L19N_T3_VREF_35
-#set_property PACKAGE_PIN G15 [get_ports {sw[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {sw[0]}]
+set_property PACKAGE_PIN G15 [get_ports {faultswitch}]
+set_property IOSTANDARD LVCMOS33 [get_ports {faultswitch}]
 
 ##IO_L24P_T3_34
 #set_property PACKAGE_PIN P15 [get_ports {sw[1]}]

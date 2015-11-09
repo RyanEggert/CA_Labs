@@ -103,6 +103,19 @@ int main()
     	 }
     }
 
+    int test2address = 0;
+    int test2value = 0;
+
+    for (test2address; test2address<127; test2address+=1){
+    	spi_write(&SpiInstance, test2address, 255 - test2address);
+    }
+
+    int test2res = 0;
+    for (test2address = 0; test2address<127; test2address+=1){
+    	test2res = spi_read(&SpiInstance, test2address);
+    	xil_printf("0x%X\n\r", test2res);
+    }
+
     if (dutpassed = 1){
     	xil_printf("All tests passed\n\r");
     } else {
