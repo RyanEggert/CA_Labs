@@ -66,13 +66,10 @@ void delay(int n);
 
 int main()
 {
-    xil_printf("Program Started\n\r");
+    xil_printf("Program Started...\n\r");
     init_platform();
-    xil_printf("Platform init done\n\r");
     init_spi(&SpiInstance);
-    xil_printf("SPI init done\n\r");
     init_gpio(&GpioInstance);
-    xil_printf("Finished init\n\r");
     u8 LED_data = 0x1;
     xil_printf("Writing LED data");
     XGpio_DiscreteWrite(&GpioInstance, LED_CHANNEL, LED_data);
@@ -80,15 +77,40 @@ int main()
     LED_data |= 0x1<<1;
     XGpio_DiscreteWrite(&GpioInstance, LED_CHANNEL, LED_data);
 
-    //TODO: Create better tests
-    int addr = 0;       //may want to change addr and value to u8 or uint8_t; look up the data types -Meg
-    int value = 10;
-    spi_write(&SpiInstance, addr, value);
-    u8 res = spi_read(&SpiInstance, addr);
-    xil_printf("Wrote to %X. %X transmitted. %X readback.\n\r", addr, value, res);
+//    u8 addr = 0;
+//    u8 value = 10;
+//    spi_write(&SpiInstance, addr, value);
+//    u8 res = spi_read(&SpiInstance, addr);
+//    xil_printf("Wrote to %X. \"%X\" transmitted. \"%X\" readback.\n\r", addr, value, res);
+
+    int ad = 0;
+	int test_value = 0;
+	int dutpassed = 1;
+    for (ad; ad<127; ad+=1){
+    	 for (test_value = 0; test_value<255; test_value+=1){
+    		 u8 write_value = test_value;
+    		 u8 write_addr = ad;
+    		 // Write this value to this address
+    		 spi_write(&SpiInstance, write_addr, write_value);
+    		 // xil_printf("Writing 0x%X to address 0x%X...\n\r", write_value, write_addr);
+    		 // Read value from this address
+    		 u8 this_res = spi_read(&SpiInstance, write_addr);
+    		 // xil_printf("Reading address 0x%X, received 0x%X, expected 0x%X.\n\r", write_addr, this_res, write_value);
+    		 if (this_res != write_value) {
+    			 xil_printf("ERROR: Reading address 0x%X, expecting 0x%X, but received 0x%X...\n\r", write_addr, write_value, this_res);
+    			 dutpassed = 0;
+    		 }
+    	 }
+    }
+
+    if (dutpassed = 1){
+    	xil_printf("All tests passed\n\r");
+    } else {
+    	xil_printf("Device failed\n\r");
+    }
 
     LED_data |= 0x1<<2;
-    xil_printf("Tests complete. Please review results.\n\r");
+    xil_printf("Tests complete.");
 
     XGpio_DiscreteWrite(&GpioInstance, LED_CHANNEL, LED_data);
     LED_data |= 0x1<<3;
