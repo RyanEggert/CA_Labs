@@ -62,7 +62,7 @@ module testFSM();
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
 	
-		#1600	//delay to switch states to next state
+		#1660	//delay to switch states to next state
 		if (testFSM.dut.current_state != GOT) begin
 			dutpassed = 0;
 			$display("Test 2 failed: CS pin set from high to low with proper delay, but the current state is not GOT (1)");
@@ -72,7 +72,7 @@ module testFSM();
 		//Test 3 - if read/write is on, we should be in READ1
 		$display("Starting Test 3... (GOT --> READ1)");
 		rw = 1;
-		#200
+		#20
 		if (testFSM.dut.current_state != READ1) begin
 			dutpassed = 0;
 			$display("Test 3 failed: Read/Write set high, but the current state is not READ1 (2)");
@@ -81,17 +81,16 @@ module testFSM();
 
 		//Test 4 - a single clock cycle from READ1 should take us to READ2
 		$display("Starting Test 4... (READ1 --> READ2)");
-		#200
+		#20
 		if (testFSM.dut.current_state != READ2) begin
 			dutpassed = 0;
 			$display("Test 4 failed: A clock cycle passed in READ1, but the current state is not READ2 (3)");
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
-		#200
 		
 		//Test 5 - a single clock cycle from READ2 should take us to READ3
 		$display("Starting Test 5... (READ2 --> READ3)");
-		#200
+		#20
 		if (testFSM.dut.current_state != READ3) begin
 			dutpassed = 0;
 			$display("Test 5 failed: A clock cycle passed in READ2, but the current state is not READ3 (4)");
@@ -156,14 +155,14 @@ module testFSM();
 		//Test 2 - if CS is low, we should be in GET; then after 8 cycles we should be in GOT
 		$display("Starting Test 2... (GET --> GOT)");
 		cs_pin = 0;
-		#200
+		#20
 		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
 			$display("Test 2 failed: CS pin set from high to low with no delay, but the current state is not GET (0)");
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
 	
-		#1600	//delay to switch states to next state
+		#1630	//delay to switch states to next state
 		if (testFSM.dut.current_state != GOT) begin
 			dutpassed = 0;
 			$display("Test 2 failed: CS pin set from high to low with proper delay, but the current state is not GOT (1)");
@@ -173,17 +172,16 @@ module testFSM();
 		//Test 3 - if read/write low, go to WRITE1
 		$display("Starting Test 3... (GOT --> WRITE1)");
 		rw = 0;
-		#200
+		#20
 		if (testFSM.dut.current_state != WRITE1) begin
 			dutpassed = 0;
 			$display("Test 3 failed: Read/Write set low, but current state not WRITE1 (5)");
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
-		#200
 
 		//Test 4 - Delay 8 clock cycles, then we should be in WRITE2
 		$display("Starting Test 4... (WRITE1 --> WRITE2)");
-		#1600		
+		#20		
 		if (testFSM.dut.current_state != WRITE2) begin
 			dutpassed = 0;
 			$display("Test 4 failed: Eight clock cycles passed in WRITE1, but the current state is not WRITE2 (6)");
@@ -192,7 +190,7 @@ module testFSM();
 
 		//Test 5 - a single clock cycle from WRITE2 should take us to DONE
 		$display("Starting Test 5... (WRITE2 --> DONE)");
-		#200
+		#20
 		if (testFSM.dut.current_state != DONE) begin
 			dutpassed = 0;
 			$display("Test 5 failed: A clock cycle passed in WRITE2, but the current state is not DONE (7)");
