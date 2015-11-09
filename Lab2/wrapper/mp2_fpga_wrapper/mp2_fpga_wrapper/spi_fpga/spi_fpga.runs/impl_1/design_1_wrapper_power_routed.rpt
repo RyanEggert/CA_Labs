@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2015.2.1 (win64) Build 1302555 Wed Aug  5 13:06:02 MDT 2015
-| Date             : Mon Oct 19 02:45:46 2015
-| Host             : E6430_KF running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date             : Sun Nov 08 19:50:22 2015
+| Host             : 1FXPFV1 running 64-bit Service Pack 1  (build 7601)
 | Command          : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb
 | Design           : design_1_wrapper
 | Device           : xc7z010clg400-1
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 1.701 |
-| Dynamic (W)              | 1.568 |
+| Total On-Chip Power (W)  | 1.702 |
+| Dynamic (W)              | 1.569 |
 | Device Static (W)        | 0.134 |
 | Effective TJA (C/W)      | 11.5  |
 | Max Ambient (C)          | 65.4  |
@@ -50,19 +50,19 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.006 |        3 |       --- |             --- |
-| Slice Logic              |     0.002 |     2801 |       --- |             --- |
-|   LUT as Logic           |     0.002 |      883 |     17600 |            5.02 |
-|   Register               |    <0.001 |     1294 |     35200 |            3.68 |
+| Slice Logic              |     0.002 |     2799 |       --- |             --- |
+|   LUT as Logic           |     0.002 |      879 |     17600 |            4.99 |
+|   Register               |    <0.001 |     1293 |     35200 |            3.67 |
 |   CARRY4                 |    <0.001 |       18 |      4400 |            0.41 |
 |   LUT as Distributed RAM |    <0.001 |       16 |      6000 |            0.27 |
 |   LUT as Shift Register  |    <0.001 |       65 |      6000 |            1.08 |
-|   Others                 |     0.000 |      272 |       --- |             --- |
-| Signals                  |     0.003 |     1952 |       --- |             --- |
+|   Others                 |     0.000 |      267 |       --- |             --- |
+| Signals                  |     0.003 |     1930 |       --- |             --- |
 | Block RAM                |    <0.001 |      0.5 |        60 |            0.83 |
 | I/O                      |    <0.001 |        4 |       100 |            4.00 |
 | PS7                      |     1.556 |        1 |       --- |             --- |
 | Static Power             |     0.134 |          |           |                 |
-| Total                    |     1.701 |          |           |                 |
+| Total                    |     1.702 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.018 |       0.011 |      0.007 |
+| Vccint    |       1.000 |     0.019 |       0.012 |      0.007 |
 | Vccaux    |       1.800 |     0.012 |       0.000 |      0.012 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -81,7 +81,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.001 |       0.000 |      0.000 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
@@ -148,8 +148,8 @@ Table of Contents
 +------------------------------------------------------------+-----------+
 | Name                                                       | Power (W) |
 +------------------------------------------------------------+-----------+
-| design_1_wrapper                                           |     1.568 |
-|   design_1_i                                               |     1.568 |
+| design_1_wrapper                                           |     1.569 |
+|   design_1_i                                               |     1.569 |
 |     axi_gpio_0                                             |    <0.001 |
 |       U0                                                   |    <0.001 |
 |         AXI_LITE_IPIF_I                                    |    <0.001 |
@@ -216,17 +216,6 @@ Table of Contents
 |           RESET_SYNC_AXI_SPI_CLK_INST                      |    <0.001 |
 |           SOFT_RESET_I                                     |    <0.001 |
 |           STATUS_REG_MODE_0_GEN.STATUS_SLAVE_SEL_REG_I     |    <0.001 |
-|     mp2_0                                                  |    <0.001 |
-|       inst                                                 |    <0.001 |
-|         addr_cap                                           |    <0.001 |
-|         chse_ic                                            |    <0.001 |
-|         dat_mem                                            |    <0.001 |
-|         dff                                                |    <0.001 |
-|         fsm                                                |    <0.001 |
-|         miso_buffer                                        |    <0.001 |
-|         mosi_ic                                            |    <0.001 |
-|         sclk_ic                                            |    <0.001 |
-|         shift_reg                                          |    <0.001 |
 |     processing_system7_0                                   |     1.557 |
 |       inst                                                 |     1.557 |
 |     processing_system7_0_axi_periph                        |     0.006 |
@@ -269,6 +258,14 @@ Table of Contents
 |           ACTIVE_LOW_EXT.ACT_LO_EXT                        |    <0.001 |
 |         SEQ                                                |    <0.001 |
 |           SEQ_COUNTER                                      |    <0.001 |
+|     spiMemory_0                                            |     0.001 |
+|       inst                                                 |     0.001 |
+|         cs_conditioner                                     |    <0.001 |
+|         mosi_conditioner                                   |    <0.001 |
+|         sclk_conditioner                                   |    <0.001 |
+|         spi_dm                                             |    <0.001 |
+|         spi_shiftreg                                       |    <0.001 |
+|         spi_statemachine                                   |    <0.001 |
 +------------------------------------------------------------+-----------+
 
 

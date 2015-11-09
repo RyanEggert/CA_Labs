@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1445236967">
-  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1447029910">
   <File Type="OPT-DCP" Name="design_1_wrapper_opt.dcp"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
   <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
-  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="PWROPT-DCP" Name="design_1_wrapper_pwropt.dcp"/>
   <File Type="ROUTE-DCP" Name="design_1_wrapper_routed.dcp"/>
   <File Type="PA-TCL" Name="design_1_wrapper.tcl"/>
-  <File Type="PWROPT-DCP" Name="design_1_wrapper_pwropt.dcp"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
   <File Type="OPT-DRC" Name="design_1_wrapper_drc_opted.rpt"/>
   <File Type="PWROPT-DRC" Name="design_1_wrapper_drc_pwropted.rpt"/>
   <File Type="OPT-HWDEF" Name="design_1_wrapper.hwdef"/>
@@ -20,8 +20,8 @@
   <File Type="PLACE-PRE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_pre_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="design_1_wrapper_postplace_pwropt.dcp"/>
   <File Type="PHYSOPT-DCP" Name="design_1_wrapper_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="design_1_wrapper_drc_physopted.rpt"/>
   <File Type="RDI-RDI" Name="design_1_wrapper.vdi"/>
+  <File Type="PHYSOPT-DRC" Name="design_1_wrapper_drc_physopted.rpt"/>
   <File Type="ROUTE-DRC" Name="design_1_wrapper_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="design_1_wrapper_drc_routed.pb"/>
   <File Type="ROUTE-PWR" Name="design_1_wrapper_power_routed.rpt"/>
@@ -59,96 +59,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/bd/design_1/hdl/design_1_wrapper.v">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/StateMachine.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/StateMachine.v"/>
-        <Attr Name="ImportTime" Val="1414990560"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/shiftregister.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/shiftregister.v"/>
-        <Attr Name="ImportTime" Val="1415069806"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/inputconditioner.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/inputconditioner.v"/>
-        <Attr Name="ImportTime" Val="1415063174"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/dff.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/dff.v"/>
-        <Attr Name="ImportTime" Val="1414891022"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/DataMemory.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/DataMemory.v"/>
-        <Attr Name="ImportTime" Val="1414979626"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/buffer.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/buffer.v"/>
-        <Attr Name="ImportTime" Val="1414990212"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/addresslatch.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/addresslatch.v"/>
-        <Attr Name="ImportTime" Val="1414976016"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/spiMemory.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/spiMemory.v"/>
-        <Attr Name="ImportTime" Val="1415063380"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/SPI/mp2.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../Documents/Zynq/SPI/mp2.v"/>
-        <Attr Name="ImportTime" Val="1415060244"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

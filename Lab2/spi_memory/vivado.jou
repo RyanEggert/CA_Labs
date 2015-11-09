@@ -112,3 +112,6 @@ save_bd_design
 file copy -force C:/CA_Labs/Lab2/wrapper/mp2_fpga_wrapper/mp2_fpga_wrapper/spi_fpga/spi_fpga.runs/impl_1/design_1_wrapper.sysdef C:/CA_Labs/Lab2/wrapper/mp2_fpga_wrapper/mp2_fpga_wrapper/spi_fpga/spi_fpga.sdk/design_1_wrapper.hdf
 
 launch_sdk -workspace C:/CA_Labs/Lab2/wrapper/mp2_fpga_wrapper/mp2_fpga_wrapper/spi_fpga/spi_fpga.sdk -hwspec C:/CA_Labs/Lab2/wrapper/mp2_fpga_wrapper/mp2_fpga_wrapper/spi_fpga/spi_fpga.sdk/design_1_wrapper.hdf
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
