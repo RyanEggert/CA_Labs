@@ -12,6 +12,8 @@ module testFSM();
 	wire miso_en;
 
 	reg dutpassed;
+
+	//creating an fsm called dut with all the characteristics of an fsm
 	fsm dut(.cs_pin(cs_pin),
 			.clk(clk),
 			.sclk_pin(sclk_pin),
@@ -24,23 +26,26 @@ module testFSM();
 
 	parameter GET = 3'b000, GOT = 3'b001, READ1 = 3'b010, READ2 = 3'b011, READ3 = 3'b100, WRITE1 = 3'b101, WRITE2 = 3'b110, DONE = 3'b111;
 
-	initial sclk_pin = 0;
-	initial clk = 0;
-	always #100 sclk_pin =! sclk_pin;
-	always #10 clk =! clk;
+	initial sclk_pin = 0;				//initialize the slow clock to zero
+	initial clk = 0;					//initialize the fast clock to zero
+	always #100 sclk_pin =! sclk_pin;	//build the slow clock: every 100 nanoseconds, NOT the state of the slow clock to make it tick
+	always #10 clk =! clk;				//create the fast clock; every 10 nanoseconds, NOT the state of the fast clock to make it tick
 
 	initial begin
-		// parameter cstate = testFSM.dut.current_state, nstate = testFSM.dut.next_state;
-		dutpassed = 1;
-		#20
+		dutpassed = 1;		//set the passing condition intitally to 1; if it fails anywhere in the initial block, it will be set to 0
+		#20 				//initial delay to allow everything to get set up
+
+		//begin read path testing
 		$display("----------------------------------");
 		$display("Testing Read Path...");
+
 		//Test 1 - if CS pin is high, remain in GET state
 		$display("Starting Test 1... (steady GET)");
 		cs_pin = 1;
-		#20
+		#20 				//delay to allow chip select set to high to take effect
+
 		if (testFSM.dut.current_state != GET) begin 
-			dutpassed = 0;
+			dutpassed = 0;		//alert that the device failed
 			$display("Test 1 failed: CS pin set high, but the current state is not GET (0)");	
 			$display("current state: %d", testFSM.dut.current_state);			
 		end
@@ -54,7 +59,7 @@ module testFSM();
 
 		//Test 2 - if CS is low, we should be in GET; then after 8 cycles we should be in GOT
 		$display("Starting Test 2... (GET --> GOT)");
-		cs_pin = 0;
+		cs_pin = 0;		//set the chip select low after it was high for test 1
 		#20
 		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
@@ -71,7 +76,7 @@ module testFSM();
 
 		//Test 3 - if read/write is on, we should be in READ1
 		$display("Starting Test 3... (GOT --> READ1)");
-		rw = 1;
+		rw = 1;			//set the read/write high to change to READ1 state
 		#20
 		if (testFSM.dut.current_state != READ1) begin
 			dutpassed = 0;
@@ -99,7 +104,7 @@ module testFSM();
 
 		//Test 6 - Delay 8 clock cycles, then we should be in DONE
 		$display("Starting Test 6... (READ3 --> DONE)");
-		#1600
+		#1600		//with a short clock cycle of 100 nanoseconds, a full cycle is 200 nanoseconds and we need to wait 8 cycles; 200 * 8 = 1600 nanosecond delay
 		if (testFSM.dut.current_state != DONE) begin
 			dutpassed = 0;
 			$display("Test 6 failed: Eight clock cycles passed in READ3, but the current state is not DONE (7)");
@@ -117,7 +122,7 @@ module testFSM();
 
 		//Test 8 - Set chip select high, then we should go back to GET
 		$display("Starting Test 8... (DONE --> GET)");
-		cs_pin = 1;
+		cs_pin = 1;		//setting chip select high should send us back to GET
 		#200
 		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
@@ -125,6 +130,7 @@ module testFSM();
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
 
+		//results of the read path
 		#100
 		if (dutpassed == 1) begin
 			$display("Read path PASSED");
@@ -132,12 +138,13 @@ module testFSM();
 			$display("Read path FAILED");
 		end
 
+		//begin write path testing
 		$display("----------------------------------");
 		$display("Testing Write Path...");
 		
 		//Test 1 - if CS pin is high, remain in GET state
 		$display("Starting Test 1... (steady GET)");
-		cs_pin = 1;
+		cs_pin = 1;		//set chip select high
 		#200
 		if (testFSM.dut.current_state != GET) begin 
 			dutpassed = 0;
@@ -154,7 +161,7 @@ module testFSM();
 
 		//Test 2 - if CS is low, we should be in GET; then after 8 cycles we should be in GOT
 		$display("Starting Test 2... (GET --> GOT)");
-		cs_pin = 0;
+		cs_pin = 0;		//set chip select low
 		#20
 		if (testFSM.dut.current_state != GET) begin
 			dutpassed = 0;
@@ -171,7 +178,7 @@ module testFSM();
 
 		//Test 3 - if read/write low, go to WRITE1
 		$display("Starting Test 3... (GOT --> WRITE1)");
-		rw = 0;
+		rw = 0;		//set the read/write low to change to WRITE1 state
 		#20
 		if (testFSM.dut.current_state != WRITE1) begin
 			dutpassed = 0;
@@ -206,6 +213,7 @@ module testFSM();
 			$display("current_state: %d", testFSM.dut.current_state);
 		end
 
+		//results of the write path
 		#100
 		if (dutpassed == 1) begin
 			$display("Write path PASSED");
