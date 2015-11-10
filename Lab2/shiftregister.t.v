@@ -21,6 +21,7 @@ module testshiftregister();
     		           .parallelDataOut(parallelDataOut), 
     		           .serialDataOut(serialDataOut));
     
+    // initialize the clock
     initial clk=0;
     always #10 clk=!clk;    // 50MHz Clock
     
@@ -28,6 +29,7 @@ module testshiftregister();
     
     $display("Test Case 0: Full set to 0");
 
+    //parallel loading all 0's
     parallelDataIn = 8'd0; 
     parallelLoad = 1;
     #40
@@ -38,6 +40,7 @@ module testshiftregister();
     
     $display("Test Case 1: Serial In");
     
+    //serial loading 1, 0, 1, 0 
     serialDataIn = 1;
     peripheralClkEdge = 1;
     #20
@@ -61,18 +64,22 @@ module testshiftregister();
     if (parallelDataOut != 8'd10 || serialDataOut!= 0)
         $display("Test Case 1 Failed");
     
+    //waiting 4 clock cycles, in which serialDataIn will be loaded 4 times
     #80
+
     
-    // Added 1, 0, 1, 0 to the shift register through serial input, checking that they were saved correctly in order and MSB is correct
+    // Added 0, 0, 0, 0 to the shift register through serial input, checking that they were saved correctly in order and MSB is correct
     if (parallelDataOut != 8'd10 || serialDataOut!= 1)
         $display("Test Case 1 Failed");
     
+    //resetting everything to 0s
     parallelDataIn = 8'd0; 
     parallelLoad = 1;
     #40
     
     $display("Test Case 2: Parallel In");
 
+    //setting parallel data in to 128
     parallelDataIn = 8'd128;
     parallelLoad = 1;
     #20
@@ -90,6 +97,8 @@ module testshiftregister();
 
     //Test Case 3
     $display("Test Case 3: Conflict of Serial and Parallel");
+    
+    // Doing a serial load and a parallel load at the same time
     peripheralClkEdge = 1;
     parallelLoad = 1;
     parallelDataIn = 8'd255;
@@ -100,9 +109,11 @@ module testshiftregister();
     if (parallelDataOut != 8'd255 || serialDataOut != 1)
         $display("Test Case 3 Failed");
 
+    //stop parallel loading
     parallelLoad = 0;
     #80
-    //If we turn the parallel load off, the serial data starts coming back in again
+    
+    //When we turn the parallel load off, the serial data starts coming back in again
     if (parallelDataOut != 8'd240 || serialDataOut != 1)
         $display("Test Case 3 Failed");
 
