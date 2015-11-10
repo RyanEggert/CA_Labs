@@ -77,46 +77,39 @@ int main()
     LED_data |= 0x1<<1;
     XGpio_DiscreteWrite(&GpioInstance, LED_CHANNEL, LED_data);
 
-//    u8 addr = 0;
-//    u8 value = 10;
-//    spi_write(&SpiInstance, addr, value);
-//    u8 res = spi_read(&SpiInstance, addr);
-//    xil_printf("Wrote to %X. \"%X\" transmitted. \"%X\" readback.\n\r", addr, value, res);
 
-    int ad = 0;
+    // SPI Tests
+
+    // u8 addr = 0;
+    // u8 value = 10;
+    // spi_write(&SpiInstance, addr, value);
+    // u8 res = spi_read(&SpiInstance, addr);
+    // xil_printf("Wrote to %X. \"%X\" transmitted. \"%X\" readback.\n\r", addr, value, res);
+    
+    int dutpassed = 1;
+    // Test 1: Write a value to a register. Subsequently read it back and confirm it's sameness. Repeat this process,
+    // in turn writing every possible 8-bit value to each possible 7-bit address. 
+    int ad;
 	int test_value = 0;
-	int dutpassed = 1;
-    for (ad; ad<127; ad+=1){
+	
+    for (ad = 0; ad<127; ad+=1){
     	 for (test_value = 0; test_value<255; test_value+=1){
     		 u8 write_value = test_value;
     		 u8 write_addr = ad;
-    		 // Write this value to this address
-    		 spi_write(&SpiInstance, write_addr, write_value);
+    		 spi_write(&SpiInstance, write_addr, write_value);    // Write `write_value` to the `write_address`
     		 // xil_printf("Writing 0x%X to address 0x%X...\n\r", write_value, write_addr);
-    		 // Read value from this address
-    		 u8 this_res = spi_read(&SpiInstance, write_addr);
-    		 // xil_printf("Reading address 0x%X, received 0x%X, expected 0x%X.\n\r", write_addr, this_res, write_value);
-    		 if (this_res != write_value) {
-    			 xil_printf("ERROR: Reading address 0x%X, expecting 0x%X, but received 0x%X...\n\r", write_addr, write_value, this_res);
-    			 dutpassed = 0;
+    		 
+    		 u8 this_res = spi_read(&SpiInstance, write_addr);    // Read value from the address written to
+    		 // xil_printf("Reading address 0x%X, received 0x%X, expected 0x%X.\n\r", write_addr, this_res, write_value); // Why does this break the test?
+    		 
+             if (this_res != write_value) {                       // Throw error if read != sent
+    			 xil_printf("ERROR: Reading address 0x%X, expecting 0x%X, but received 0x%X...\n\r", write_addr, write_value, this_res); // Print diagnostic info
+    			 dutpassed = 0;  // Indicate tests have failed
     		 }
     	 }
     }
 
-    int test2address = 0;
-    int test2value = 0;
-
-    for (test2address; test2address<127; test2address+=1){
-    	spi_write(&SpiInstance, test2address, 255 - test2address);
-    }
-
-    int test2res = 0;
-    for (test2address = 0; test2address<127; test2address+=1){
-    	test2res = spi_read(&SpiInstance, test2address);
-    	xil_printf("0x%X\n\r", test2res);
-    }
-
-    if (dutpassed = 1){
+    if ( dutpassed == 1 ){
     	xil_printf("All tests passed\n\r");
     } else {
     	xil_printf("Device failed\n\r");
